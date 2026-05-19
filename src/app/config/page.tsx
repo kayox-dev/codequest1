@@ -99,7 +99,7 @@ export default function Config() {
 
         <Section title="Conta">
           <EditableRow label="Nome de usuário" sub="Nome exibido no perfil e ranking">
-            <input className="config-input" value={username} onChange={(event) => setUsername(event.target.value)} placeholder="Seu username" />
+            <input className="config-input" value={username} onChange={(event) => setUsername(event.target.value)} placeholder="Seu nome de usuário" />
           </EditableRow>
           <Row label="E-mail" sub={email || 'Carregando...'} action={<span className="config-muted-action">Gerenciado pelo login</span>} />
           <Row label="Nível" sub={`Nível ${profile?.level ?? 1} · ${profile?.xp_total ?? 0} XP · streak ${profile?.streak ?? 0}`} action={<Link className="btn-secondary" href="/perfil">Ver perfil</Link>} />

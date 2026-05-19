@@ -70,7 +70,7 @@ export default function Escolha() {
       })
 
       if (!unlockedLesson?.id) {
-        toast.error('Nao foi possivel iniciar esta trilha agora.')
+        toast.error('Não foi possível iniciar esta trilha agora.')
         router.push(`/trilhas/${track.slug}`)
         return
       }

@@ -46,7 +46,7 @@ export default function ConfigTags() {
         }
       } catch (err: any) {
         console.error('[ConfigTags] failed to load tags', err)
-        setError(err?.message ?? 'Nao consegui carregar suas tags.')
+        setError(err?.message ?? 'Não consegui carregar suas tags.')
       } finally {
         if (active) setLoading(false)
       }
@@ -78,7 +78,7 @@ export default function ConfigTags() {
       toast.success(slug ? 'Tag equipada' : 'Tag desequipada')
     } catch (err: any) {
       console.error('[ConfigTags] failed to save tag', err)
-      toast.error(err?.message ?? 'Nao consegui salvar essa tag.')
+      toast.error(err?.message ?? 'Não consegui salvar essa tag.')
     } finally {
       setSavingSlug(null)
     }
@@ -89,7 +89,7 @@ export default function ConfigTags() {
       <main className="devtags-main config-tags-main">
         <div className="progression-head">
           <div>
-            <div className="sec-title">Configuracoes / Tags</div>
+            <div className="sec-title">Configurações / Tags</div>
             <p className="text-t2 text-sm">Escolha um titulo principal para aparecer no perfil, ranking e dashboard.</p>
           </div>
           <div className="progression-summary">

@@ -24,7 +24,7 @@ export default function Register() {
 
   if (ok)
     return (
-      <AuthLayout title="Conta criada!" subtitle="Agora confirme pelo email ou entre se a confirmação estiver desativada">
+      <AuthLayout title="Conta criada!" subtitle="Agora confirme pelo e-mail ou entre se a confirmação estiver desativada">
         <Link className="btn-primary block text-center" href="/auth/login">
           Ir para login
         </Link>
@@ -42,11 +42,11 @@ export default function Register() {
         </button>
       </div>
       <div className="auth-divider">
-        <span>ou use email</span>
+        <span>ou use e-mail</span>
       </div>
       <form onSubmit={submit} className="space-y-4">
-        <input className="input-field" name="register-username" autoComplete="nickname" placeholder="Username" value={u} onChange={(e) => setU(e.target.value)} required />
-        <input className="input-field" name="register-email" autoComplete="email" type="email" placeholder="Email" value={e} onChange={(ev) => setE(ev.target.value)} required />
+        <input className="input-field" name="register-username" autoComplete="nickname" placeholder="Nome de usuário" value={u} onChange={(e) => setU(e.target.value)} required />
+        <input className="input-field" name="register-email" autoComplete="email" type="email" placeholder="E-mail" value={e} onChange={(ev) => setE(ev.target.value)} required />
         <input className="input-field" name="register-password" autoComplete="new-password" type="password" minLength={6} placeholder="Senha" value={p} onChange={(e) => setP(e.target.value)} required />
         <button className="btn-primary w-full">Criar conta zerada</button>
       </form>

@@ -32,7 +32,7 @@ export function AiAssistant() {
       return 'Abra a trilha atual, complete a fase ativa e a próxima ficará disponível automaticamente.'
     }
     if (q.includes('perfil') || q.includes('username')) {
-      return 'Finalize o perfil com username, avatar, objetivo e linguagens favoritas para personalizar a jornada.'
+      return 'Finalize o perfil com nome de usuário, avatar, objetivo e linguagens favoritas para personalizar a jornada.'
     }
     if (q.includes('google')) {
       return 'Se o Google OAuth não abrir, confira o provider no Supabase e o redirect URI do callback do projeto.'

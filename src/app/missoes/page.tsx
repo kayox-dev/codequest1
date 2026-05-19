@@ -104,14 +104,14 @@ export default function Missoes() {
         missionKey: getMissionKey(mission),
         missionType: mission.type,
         xpReward: mission.xp,
-        description: `Missao resgatada: ${mission.title}`,
+        description: `Missão resgatada: ${mission.title}`,
       })
 
       if (typeof reward.new_xp === 'number' && typeof reward.new_level === 'number') {
         updateProfile({ xp_total: reward.new_xp, level: reward.new_level })
       }
 
-      toast.success(reward.already_claimed ? 'Recompensa ja estava resgatada.' : `Recompensa resgatada: +${reward.xp_added} XP`)
+      toast.success(reward.already_claimed ? 'Recompensa já estava resgatada.' : `Recompensa resgatada: +${reward.xp_added} XP`)
       await loadMetrics()
     } catch (error: any) {
       console.error('[Missoes] claim failed', { mission, error })

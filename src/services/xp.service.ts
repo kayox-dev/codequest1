@@ -19,13 +19,13 @@ export type XpRewardResult = {
 
 function normalizeXpReward(data: unknown): XpRewardResult {
   if (!data || typeof data !== 'object') {
-    throw new Error('O Supabase nao retornou a recompensa de XP.')
+    throw new Error('O Supabase não retornou a recompensa de XP.')
   }
 
   const reward = data as Partial<XpRewardResult>
   if (typeof reward.new_xp !== 'number' || typeof reward.new_level !== 'number' || typeof reward.xp_added !== 'number') {
     console.error('[xpService] invalid reward payload', data)
-    throw new Error('Resposta de XP invalida. O perfil nao foi atualizado.')
+    throw new Error('Resposta de XP inválida. O perfil não foi atualizado.')
   }
 
   return {

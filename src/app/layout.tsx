@@ -5,7 +5,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'CodeQuest',
-  description: 'Aprenda programacao como um game',
+  description: 'Aprenda programação como um game',
   icons: {
     icon: '/favicon_cq.png',
     shortcut: '/favicon_cq.png',

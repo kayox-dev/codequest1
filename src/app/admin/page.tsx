@@ -3,7 +3,7 @@ import { AppShell } from '@/components/layout/AppShell'
 
 const adminLinks = [
   { title: 'Trilhas', desc: 'Revisar catalogo final e acessar roadmaps ativos.', href: '/escolha-trilha' },
-  { title: 'Missoes', desc: 'Validar recompensas, XP e progresso diario.', href: '/missoes' },
+  { title: 'Missões', desc: 'Validar recompensas, XP e progresso diário.', href: '/missoes' },
   { title: 'Desafios', desc: 'Testar desafios praticos e boss challenges.', href: '/desafios' },
   { title: 'Ranking', desc: 'Conferir dados publicos de leaderboard.', href: '/ranking' },
 ]

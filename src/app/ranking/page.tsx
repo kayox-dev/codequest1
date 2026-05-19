@@ -50,7 +50,7 @@ export default async function Ranking() {
                 <span className="rank-name rank-player-name" style={isMe ? { color: 'var(--accent2)' } : undefined}>
                   <span>{p.username || 'Dev'}</span>
                   {tag && <span className={`rank-tag rarity-${tag.rarity}`}>{tag.icon} {tag.name}</span>}
-                  {isMe && <span style={{ fontSize: 10, color: 'var(--t3)', fontWeight: 400 }}> (voce)</span>}
+                  {isMe && <span style={{ fontSize: 10, color: 'var(--t3)', fontWeight: 400 }}> (você)</span>}
                 </span>
                 <span className="rank-level">Nv. {p.level ?? 1}</span>
                 <span className="rank-streak">🔥 {p.streak ?? 0}</span>

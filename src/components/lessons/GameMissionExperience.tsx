@@ -103,16 +103,16 @@ function getHtmlSpec(lesson: Lesson, conceptSource?: string): ChallengeSpec {
       objective: 'Criar uma imagem usando <img> com src e alt.',
       starter: '<main>\n  \n</main>',
       solution: '<main>\n  <img src="avatar.png" alt="Avatar do estudante" />\n</main>',
-      concept: 'A tag img mostra imagens na pagina. O atributo src aponta o arquivo e alt descreve a imagem para acessibilidade.',
+      concept: 'A tag img mostra imagens na página. O atributo src aponta o arquivo e alt descreve a imagem para acessibilidade.',
       hint: 'Use <img src="avatar.png" alt="Avatar do estudante" />.',
     },
     {
       tag: 'button',
       text: 'Entrar',
-      objective: 'Criar um botao com o texto Entrar.',
+      objective: 'Criar um botão com o texto Entrar.',
       starter: '<main>\n  \n</main>',
       solution: '<main>\n  <button>Entrar</button>\n</main>',
-      concept: 'Botoes representam acoes. Use button para cliques reais, nao divs clicaveis.',
+      concept: 'Botões representam ações. Use button para cliques reais, não divs clicáveis.',
       hint: 'Abra <button>, escreva Entrar e feche com </button>.',
     },
     {
@@ -138,7 +138,7 @@ function getHtmlSpec(lesson: Lesson, conceptSource?: string): ChallengeSpec {
       tag: 'label',
       attrs: ['for'],
       text: 'Email',
-      objective: 'Criar um campo de email com label associado.',
+      objective: 'Criar um campo de e-mail com label associado.',
       starter: '<main>\n  <form>\n    \n  </form>\n</main>',
       solution: '<main>\n  <form>\n    <label for="email">Email</label>\n    <input id="email" type="email" />\n  </form>\n</main>',
       concept: 'Formularios acessiveis conectam label e input, ajudando teclado e leitores de tela.',
@@ -147,10 +147,10 @@ function getHtmlSpec(lesson: Lesson, conceptSource?: string): ChallengeSpec {
     {
       tag: 'article',
       text: 'Noticia da trilha',
-      objective: 'Criar uma estrutura semantica com article.',
+      objective: 'Criar uma estrutura semântica com article.',
       starter: '<main>\n  \n</main>',
       solution: '<main>\n  <article>\n    <h1>Noticia da trilha</h1>\n    <p>Conteudo principal organizado.</p>\n  </article>\n</main>',
-      concept: 'Semantica da significado ao conteudo. article marca uma parte independente da pagina.',
+      concept: 'Semântica dá significado ao conteúdo. article marca uma parte independente da página.',
       hint: 'Crie <article> com um titulo e um paragrafo dentro.',
     },
     {
@@ -173,7 +173,7 @@ function getHtmlSpec(lesson: Lesson, conceptSource?: string): ChallengeSpec {
     source.includes('form') || source.includes('input') || source.includes('label') ? variants[6] :
     source.includes('table') || source.includes('tabela') || source.includes('dados') ? variants[8] :
     source.includes('semant') || source.includes('article') || source.includes('header') || source.includes('footer') ? variants[7] :
-    { tag: 'h1', text: 'CodeQuest', objective: 'Criar o titulo principal CodeQuest.', starter: '<main>\n  \n</main>', solution: '<main>\n  <h1>CodeQuest</h1>\n</main>', concept: 'HTML cria a estrutura da pagina com tags que descrevem cada parte do conteudo.', hint: 'Use <h1>CodeQuest</h1> dentro do main.' }
+    { tag: 'h1', text: 'CodeQuest', objective: 'Criar o título principal CodeQuest.', starter: '<main>\n  \n</main>', solution: '<main>\n  <h1>CodeQuest</h1>\n</main>', concept: 'HTML cria a estrutura da página com tags que descrevem cada parte do conteúdo.', hint: 'Use <h1>CodeQuest</h1> dentro do main.' }
 
   return {
     tech: 'html',
@@ -214,11 +214,11 @@ function getCssSpec(lesson: Lesson, conceptSource?: string): ChallengeSpec {
       hint: 'Use display:grid e grid-template-columns: repeat(3, 1fr).',
     },
     {
-      objective: 'Adicionar uma animacao suave ao botao',
+      objective: 'Adicionar uma animação suave ao botão',
       requiredCss: ['transition', ':hover', 'transform'],
       css: '.cta {\n  padding: 14px 20px;\n  border: 0;\n  border-radius: 999px;\n  background: #2ecc71;\n  color: #051b10;\n  font-weight: 900;\n  transition: transform .2s ease, box-shadow .2s ease;\n}\n.cta:hover {\n  transform: translateY(-3px);\n  box-shadow: 0 14px 35px rgba(46,204,113,.35);\n}',
       starter: '.cta {\n  padding: 14px 20px;\n  border: 0;\n  border-radius: 999px;\n  background: #2ecc71;\n  color: #051b10;\n  font-weight: 900;\n}',
-      concept: 'Transicoes deixam mudancas visuais mais fluidas, como hover, foco e estados de botao.',
+      concept: 'Transições deixam mudanças visuais mais fluidas, como hover, foco e estados de botão.',
       hint: 'Adicione transition na .cta e crie .cta:hover com transform.',
     },
     {
@@ -316,12 +316,12 @@ function getJavaScriptSpec(lesson: Lesson, conceptSource?: string): ChallengeSpe
   const source = normalize(conceptSource ?? `${lesson.title} ${lesson.description} ${JSON.stringify(lesson.content ?? '')}`)
   const variants = [
     {
-      objective: 'Criar uma funcao somar que retorna 5',
+      objective: 'Criar uma função somar que retorna 5',
       requiredJs: ['function somar', 'return', 'somar(2, 3)'],
       starter: 'function somar(a, b) {\n  \n}\n\nconsole.log(somar(2, 3))',
       solution: 'function somar(a, b) {\n  return a + b\n}\n\nconsole.log(somar(2, 3))',
-      concept: 'Funcoes guardam uma acao reutilizavel. Voce envia valores e recebe um resultado.',
-      hint: 'Dentro da funcao, retorne a + b.',
+      concept: 'Funções guardam uma ação reutilizável. Você envia valores e recebe um resultado.',
+      hint: 'Dentro da função, retorne a + b.',
     },
     {
       objective: 'Usar array map para dobrar numeros',
@@ -332,15 +332,15 @@ function getJavaScriptSpec(lesson: Lesson, conceptSource?: string): ChallengeSpe
       hint: 'Use numeros.map((numero) => numero * 2).',
     },
     {
-      objective: 'Alterar o texto da pagina com DOM',
+      objective: 'Alterar o texto da página com DOM',
       requiredJs: ['querySelector', 'textContent', 'Missao iniciada'],
       starter: "const status = document.querySelector('#status')\n\n",
       solution: "const status = document.querySelector('#status')\nstatus.textContent = 'Missao iniciada'",
-      concept: 'DOM e a representacao da pagina que o JavaScript consegue ler e alterar.',
+      concept: 'DOM é a representação da página que o JavaScript consegue ler e alterar.',
       hint: "Pegue #status e defina textContent como 'Missao iniciada'.",
     },
     {
-      objective: 'Responder ao clique de um botao',
+      objective: 'Responder ao clique de um botão',
       requiredJs: ['addEventListener', 'click', 'textContent'],
       starter: "const botao = document.querySelector('#start')\nconst status = document.querySelector('#status')\n\n",
       solution: "const botao = document.querySelector('#start')\nconst status = document.querySelector('#status')\nbotao.addEventListener('click', () => {\n  status.textContent = 'Evento recebido'\n})",
@@ -348,7 +348,7 @@ function getJavaScriptSpec(lesson: Lesson, conceptSource?: string): ChallengeSpe
       hint: "Use botao.addEventListener('click', () => { ... }).",
     },
     {
-      objective: 'Criar um objeto de usuario com nivel',
+      objective: 'Criar um objeto de usuário com nível',
       requiredJs: ['const usuario', 'nivel', 'console.log'],
       starter: 'const usuario = {\n  nome: "Ada"\n}\n\nconsole.log(usuario)',
       solution: 'const usuario = {\n  nome: "Ada",\n  nivel: 2\n}\n\nconsole.log(usuario.nivel)',
@@ -372,7 +372,7 @@ function getJavaScriptSpec(lesson: Lesson, conceptSource?: string): ChallengeSpe
       hint: 'Use localStorage.setItem("tema", tema) e depois localStorage.getItem("tema").',
     },
     {
-      objective: 'Criar variáveis nome e nivel com let e const',
+      objective: 'Criar variáveis nome e nível com let e const',
       requiredJs: ['const nome', 'let nivel', 'console.log'],
       starter: 'const nome = "Ada"\n\nconsole.log(nome)',
       solution: 'const nome = "Ada"\nlet nivel = 1\n\nconsole.log(nome, nivel)',
@@ -500,7 +500,7 @@ function getReactSpec(lesson: Lesson, conceptSource?: string): ChallengeSpec {
     ],
     concept: picked.concept,
     useCase: 'React e usado para dashboards, plataformas SaaS, apps de aprendizado, lojas e produtos interativos.',
-    mentalModel: 'Voce descreve componentes. Quando dados mudam, React redesenha a parte necessaria da tela.',
+    mentalModel: 'Você descreve componentes. Quando os dados mudam, o React redesenha a parte necessária da tela.',
     hint: picked.hint,
     demoTitle: 'Preview React',
     outputTitle: 'Preview JSX em tempo real',
@@ -511,15 +511,15 @@ function getTypeScriptSpec(lesson: Lesson, conceptSource?: string): ChallengeSpe
   const source = normalize(conceptSource ?? `${lesson.title} ${lesson.description} ${JSON.stringify(lesson.content ?? '')}`)
   const variants = [
     {
-      objective: 'Tipar um perfil de usuario',
+      objective: 'Tipar um perfil de usuário',
       requiredJs: ['type Perfil', 'nome: string', 'nivel: number'],
       starter: 'const perfil = {\n  nome: "Ada",\n  nivel: 3\n}\n\nconsole.log(perfil.nome)',
       solution: 'type Perfil = {\n  nome: string\n  nivel: number\n}\n\nconst perfil: Perfil = {\n  nome: "Ada",\n  nivel: 3\n}\n\nconsole.log(perfil.nome)',
-      concept: 'TypeScript adiciona tipos ao JavaScript para pegar erros antes do codigo rodar.',
+      concept: 'TypeScript adiciona tipos ao JavaScript para pegar erros antes do código rodar.',
       hint: 'Crie type Perfil com nome:string e nivel:number, depois use const perfil: Perfil.',
     },
     {
-      objective: 'Criar uma interface de Missao',
+      objective: 'Criar uma interface de Missão',
       requiredJs: ['interface Missao', 'xp: number', 'concluida: boolean'],
       starter: 'const missao = {\n  titulo: "HTML basico",\n  xp: 80,\n  concluida: false\n}',
       solution: 'interface Missao {\n  titulo: string\n  xp: number\n  concluida: boolean\n}\n\nconst missao: Missao = {\n  titulo: "HTML basico",\n  xp: 80,\n  concluida: false\n}',
@@ -527,19 +527,19 @@ function getTypeScriptSpec(lesson: Lesson, conceptSource?: string): ChallengeSpe
       hint: 'Defina interface Missao com titulo, xp e concluida.',
     },
     {
-      objective: 'Tipar uma funcao que soma XP',
+      objective: 'Tipar uma função que soma XP',
       requiredJs: ['function somarXp', 'number', 'return'],
       starter: 'function somarXp(atual, ganho) {\n  return atual + ganho\n}',
       solution: 'function somarXp(atual: number, ganho: number): number {\n  return atual + ganho\n}',
       concept: 'Tipos em parametros e retorno deixam funcoes mais previsiveis.',
-      hint: 'Adicione : number nos parametros e no retorno da funcao.',
+      hint: 'Adicione : number nos parâmetros e no retorno da função.',
     },
     {
-      objective: 'Criar uma funcao generica first<T>',
+      objective: 'Criar uma função genérica first<T>',
       requiredJs: ['function first<t>', 'items: t[]', 'return items[0]'],
       starter: 'function first(items) {\n  return items[0]\n}\n\nconst primeira = first(["HTML", "CSS"])',
       solution: 'function first<T>(items: T[]): T {\n  return items[0]\n}\n\nconst primeira = first(["HTML", "CSS"])',
-      concept: 'Generics preservam o tipo de entrada ao reutilizar uma funcao.',
+      concept: 'Generics preservam o tipo de entrada ao reutilizar uma função.',
       hint: 'Use function first<T>(items: T[]): T.',
     },
     {
@@ -567,7 +567,7 @@ function getTypeScriptSpec(lesson: Lesson, conceptSource?: string): ChallengeSpe
     solutionFiles: [{ id: 'main.ts', label: 'main.ts', language: 'typescript', value: picked.solution }],
     concept: picked.concept,
     useCase: 'TypeScript e comum em apps React, APIs Node, SDKs, dashboards e produtos grandes.',
-    mentalModel: 'Voce ainda escreve JavaScript, mas adiciona contratos que avisam quando os dados nao combinam.',
+    mentalModel: 'Você ainda escreve JavaScript, mas adiciona contratos que avisam quando os dados não combinam.',
     hint: picked.hint,
     demoTitle: 'Saida esperada',
     outputTitle: 'Type-check simulado',
@@ -603,7 +603,7 @@ function getNodeSpec(lesson: Lesson, conceptSource?: string): ChallengeSpec {
       files: [{ id: 'server.js', label: 'server.js', language: 'javascript', value: "const app = createApi()\n\napp.post('/tarefas', (req, res) => {\n  \n})" }],
       solutionFiles: [{ id: 'server.js', label: 'server.js', language: 'javascript', value: "const app = createApi()\n\napp.post('/tarefas', (req, res) => {\n  res.json({ created: true })\n})" }],
       concept: 'Rotas POST recebem dados e devolvem uma resposta estruturada em JSON.',
-      useCase: 'APIs criam tarefas, perfis, progresso e configuracoes usando endpoints.',
+      useCase: 'APIs criam tarefas, perfis, progresso e configurações usando endpoints.',
       mentalModel: 'O cliente envia uma acao, o backend valida e responde um objeto JSON.',
       hint: 'Dentro de app.post, use res.json({ created: true }).',
       demoTitle: 'POST simulado',
@@ -679,7 +679,7 @@ function getSqlSpec(lesson: Lesson, conceptSource?: string): ChallengeSpec {
     solutionFiles: [{ id: 'query.sql', label: 'query.sql', language: 'sql', value: picked.solution }],
     concept: picked.concept,
     useCase: 'SQL aparece em Supabase, Postgres, dashboards, rankings, perfis e sistemas de progresso.',
-    mentalModel: 'Pense em tabelas como planilhas poderosas: voce consulta, filtra, cria e relaciona dados.',
+    mentalModel: 'Pense em tabelas como planilhas poderosas: você consulta, filtra, cria e relaciona dados.',
     hint: picked.hint,
     demoTitle: 'Resultado esperado',
     outputTitle: 'Resultado SQL',
@@ -724,7 +724,7 @@ function getGitSpec(lesson: Lesson, conceptSource?: string): ChallengeSpec {
       value: 'git status\ngit add .\ngit commit -m "primeira missao"',
     }],
     concept: 'Git salva pontos da historia do projeto. Cada commit deve representar uma mudanca clara.',
-    useCase: 'Git e usado em trabalho real para revisar codigo, voltar versoes, colaborar e publicar projetos.',
+    useCase: 'Git é usado em trabalho real para revisar código, voltar versões, colaborar e publicar projetos.',
     mentalModel: 'git add prepara arquivos. git commit salva esse pacote com uma mensagem.',
     hint: 'Depois de git status, rode git add . e git commit -m "primeira missao".',
     demoTitle: 'Fluxo esperado',
@@ -753,12 +753,12 @@ function getPythonSpec(lesson: Lesson, conceptSource?: string): ChallengeSpec {
         hint: 'Use if xp >= 100: e imprima Aprovado.',
       }
     : {
-      objective: 'Criar uma funcao dobro que retorna 8',
+      objective: 'Criar uma função dobro que retorna 8',
       requiredJs: ['def dobro', 'return', 'dobro(4)'],
       starter: 'def dobro(numero):\n    \n\nprint(dobro(4))',
       solution: 'def dobro(numero):\n    return numero * 2\n\nprint(dobro(4))',
-      concept: 'Funcoes Python organizam uma regra para voce reutilizar com valores diferentes.',
-      hint: 'Dentro da funcao, use return numero * 2.',
+      concept: 'Funções Python organizam uma regra para você reutilizar com valores diferentes.',
+      hint: 'Dentro da função, use return numero * 2.',
     }
   return {
     tech: 'python',
@@ -872,8 +872,8 @@ function validateMission(files: MissionFile[], spec: ChallengeSpec): ValidationR
   if (spec.tech === 'typescript') return validateKeywordMission(fileById(files, 'main.ts'), spec, 'TypeScript validado', 'O contrato de tipos esperado foi encontrado.')
   if (spec.tech === 'react') return validateReact(fileById(files, 'App.jsx'), spec)
   if (spec.tech === 'node') return validateNode(fileById(files, 'server.js'), spec)
-  if (spec.tech === 'sql') return validateKeywordMission(fileById(files, 'query.sql'), spec, 'SQL validado', 'A consulta contem as clausulas principais da missao.')
-  if (spec.tech === 'git') return validateKeywordMission(fileById(files, 'terminal.sh'), spec, 'Git validado', 'O fluxo de terminal contem os comandos esperados.')
+  if (spec.tech === 'sql') return validateKeywordMission(fileById(files, 'query.sql'), spec, 'SQL validado', 'A consulta contém as cláusulas principais da missão.')
+  if (spec.tech === 'git') return validateKeywordMission(fileById(files, 'terminal.sh'), spec, 'Git validado', 'O fluxo de terminal contém os comandos esperados.')
   return validatePython(fileById(files, 'main.py'), spec)
 }
 
@@ -882,16 +882,16 @@ function validateHtml(code: string, spec: ChallengeSpec): ValidationResult {
   const openTag = new RegExp(`<${tag}(\\s|>|$)`, 'i')
   const closeTag = new RegExp(`</${tag}>`, 'i')
   const voidTags = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'source', 'track', 'wbr'])
-  if (!openTag.test(code)) return { ok: false, kind: 'error', title: 'Quase la', detail: `Ainda nao encontrei a tag <${tag}>.` }
-  if (!voidTags.has(tag) && !closeTag.test(code)) return { ok: false, kind: 'warn', title: 'Voce esta muito perto', detail: `Voce abriu <${tag}>, mas faltou fechar com </${tag}>.` }
+  if (!openTag.test(code)) return { ok: false, kind: 'error', title: 'Quase lá', detail: `Ainda não encontrei a tag <${tag}>.` }
+  if (!voidTags.has(tag) && !closeTag.test(code)) return { ok: false, kind: 'warn', title: 'Você está muito perto', detail: `Você abriu <${tag}>, mas faltou fechar com </${tag}>.` }
   const doc = new DOMParser().parseFromString(code, 'text/html')
   const element = doc.querySelector(tag)
-  if (!element) return { ok: false, kind: 'error', title: 'Ajuste pequeno', detail: `A tag <${tag}> parece escrita de um jeito que o navegador nao entendeu.` }
+  if (!element) return { ok: false, kind: 'error', title: 'Ajuste pequeno', detail: `A tag <${tag}> parece escrita de um jeito que o navegador não entendeu.` }
   const missingAttr = (spec.requiredAttrs ?? []).find((attr) => !element.getAttribute(attr)?.trim())
   if (missingAttr) return { ok: false, kind: 'warn', title: 'Atributo obrigatorio', detail: `Inclua o atributo ${missingAttr} em <${tag}>.` }
   if (!voidTags.has(tag) && !element.textContent?.trim()) return { ok: false, kind: 'warn', title: 'Boa estrutura', detail: `Agora coloque texto dentro de <${tag}>.` }
   if (spec.expectedText && !element.textContent.includes(spec.expectedText)) return { ok: false, kind: 'warn', title: 'Texto quase certo', detail: `O texto esperado e "${spec.expectedText}".` }
-  return { ok: true, kind: 'success', title: 'Missao validada', detail: 'Tag, fechamento e conteudo estao corretos.' }
+  return { ok: true, kind: 'success', title: 'Missão validada', detail: 'Tag, fechamento e conteúdo estão corretos.' }
 }
 
 function validateCss(css: string, spec: ChallengeSpec): ValidationResult {
@@ -899,19 +899,19 @@ function validateCss(css: string, spec: ChallengeSpec): ValidationResult {
   const missing = (spec.requiredCss ?? []).find((item) => !clean.includes(item.toLowerCase()))
   if (missing) return { ok: false, kind: 'warn', title: 'CSS quase pronto', detail: `Ainda falta usar "${missing}" para cumprir o objetivo visual.` }
   if (!/[.{#][\w-]+\s*\{/.test(css)) return { ok: false, kind: 'error', title: 'Seletor ausente', detail: 'Crie uma regra CSS com seletor e chaves, por exemplo .card { ... }.' }
-  return { ok: true, kind: 'success', title: 'Estilo validado', detail: 'As propriedades principais estao presentes e o preview ja reflete sua solucao.' }
+  return { ok: true, kind: 'success', title: 'Estilo validado', detail: 'As propriedades principais estão presentes e o preview já reflete sua solução.' }
 }
 
 function validateJavaScript(js: string, spec: ChallengeSpec): ValidationResult {
   const clean = normalize(js)
   const missing = (spec.requiredJs ?? []).find((item) => !clean.includes(normalize(item)))
-  if (missing) return { ok: false, kind: 'warn', title: 'Logica incompleta', detail: `Procure incluir "${missing}" na sua solucao.` }
+  if (missing) return { ok: false, kind: 'warn', title: 'Lógica incompleta', detail: `Procure incluir "${missing}" na sua solução.` }
   try {
     new Function(js)
   } catch (error: any) {
-    return { ok: false, kind: 'error', title: 'Erro de sintaxe', detail: error?.message ?? 'O JavaScript ainda nao consegue ser executado.' }
+    return { ok: false, kind: 'error', title: 'Erro de sintaxe', detail: error?.message ?? 'O JavaScript ainda não consegue ser executado.' }
   }
-  return { ok: true, kind: 'success', title: 'JavaScript validado', detail: 'A logica esperada existe e o codigo nao tem erro de sintaxe.' }
+  return { ok: true, kind: 'success', title: 'JavaScript validado', detail: 'A lógica esperada existe e o código não tem erro de sintaxe.' }
 }
 
 function validateReact(code: string, spec: ChallengeSpec): ValidationResult {
@@ -933,11 +933,11 @@ function validateNode(code: string, spec: ChallengeSpec): ValidationResult {
 function validatePython(code: string, spec: ChallengeSpec): ValidationResult {
   const clean = normalize(code)
   const missing = (spec.requiredJs ?? []).find((item) => !clean.includes(normalize(item)))
-  if (missing) return { ok: false, kind: 'warn', title: 'Python incompleto', detail: `Inclua "${missing}" para resolver a missao.` }
+  if (missing) return { ok: false, kind: 'warn', title: 'Python incompleto', detail: `Inclua "${missing}" para resolver a missão.` }
   if (/def\s+\w+\([^)]*\):\s*$/m.test(code) && !/\n\s+(return|print|for|if)/.test(code)) {
     return { ok: false, kind: 'warn', title: 'Bloco vazio', detail: 'Depois dos dois pontos, Python precisa de uma linha indentada.' }
   }
-  return { ok: true, kind: 'success', title: 'Python validado', detail: 'A estrutura esperada esta presente para esta missao.' }
+  return { ok: true, kind: 'success', title: 'Python validado', detail: 'A estrutura esperada está presente para esta missão.' }
 }
 
 function validateKeywordMission(code: string, spec: ChallengeSpec, title: string, detail: string): ValidationResult {
@@ -981,26 +981,26 @@ function buildJavaScriptPreview(files: MissionFile[]) {
 }
 
 function getOutput(spec: ChallengeSpec, files: MissionFile[], runtimeLines: string[]) {
-  if (spec.tech === 'javascript') return runtimeLines.length ? runtimeLines : ['Console pronto. Rode seu codigo e veja logs aqui.']
+  if (spec.tech === 'javascript') return runtimeLines.length ? runtimeLines : ['Console pronto. Rode seu código e veja logs aqui.']
   if (spec.tech === 'node') {
     const ok = validateNode(fileById(files, 'server.js'), spec).ok
     return ok
       ? ['GET /status', 'HTTP 200', '{ "ok": true, "service": "DevTags API" }']
-      : ['GET /status', 'HTTP 404', '{ "error": "Rota ainda nao respondeu JSON" }']
+      : ['GET /status', 'HTTP 404', '{ "error": "Rota ainda não respondeu JSON" }']
   }
   if (spec.tech === 'python') {
     const code = fileById(files, 'main.py')
     if (code.includes('dobro') && code.includes('return')) return ['$ python main.py', '8']
     if (code.includes('for') && code.includes('print')) return ['$ python main.py', 'HTML', 'CSS', 'JS']
-    return ['$ python main.py', 'Aguardando uma solucao valida...']
+    return ['$ python main.py', 'Aguardando uma solução válida...']
   }
   if (spec.tech === 'typescript') {
     const ok = validateKeywordMission(fileById(files, 'main.ts'), spec, 'ok', 'ok').ok
-    return ok ? ['$ tsc --noEmit', 'Sem erros de tipo para esta missao.'] : ['$ tsc --noEmit', 'Aguardando tipos obrigatorios...']
+    return ok ? ['$ tsc --noEmit', 'Sem erros de tipo para esta missão.'] : ['$ tsc --noEmit', 'Aguardando tipos obrigatórios...']
   }
   if (spec.tech === 'sql') {
     const ok = validateKeywordMission(fileById(files, 'query.sql'), spec, 'ok', 'ok').ok
-    return ok ? ['Query executada', 'Linhas afetadas/retornadas: 1'] : ['Query ainda incompleta', 'Complete as clausulas obrigatorias.']
+    return ok ? ['Query executada', 'Linhas afetadas/retornadas: 1'] : ['Query ainda incompleta', 'Complete as cláusulas obrigatórias.']
   }
   if (spec.tech === 'git') {
     const ok = validateKeywordMission(fileById(files, 'terminal.sh'), spec, 'ok', 'ok').ok
@@ -1120,11 +1120,11 @@ export function GameMissionExperience({ lesson, track }: { lesson: Lesson; track
         last_streak_date: reward.last_streak_date ?? profile?.last_streak_date,
       })
       setVictory(true)
-      toast.success(reward.already_completed ? 'Missao revisada com sucesso.' : 'Missao concluida. Proxima fase desbloqueada.')
+      toast.success(reward.already_completed ? 'Missão revisada com sucesso.' : 'Missão concluída. Próxima fase desbloqueada.')
       setTimeout(() => router.push(track ? `/trilhas/${track.slug}` : '/dashboard'), 1800)
     } catch (error: any) {
       console.error('[GameMissionExperience] complete failed', { lessonId: lesson.id, error })
-      toast.error(error?.message ?? 'Nao consegui salvar sua missao agora.')
+      toast.error(error?.message ?? 'Não consegui salvar sua missão agora.')
     } finally {
       setSaving(false)
     }
@@ -1148,8 +1148,8 @@ export function GameMissionExperience({ lesson, track }: { lesson: Lesson; track
               <motion.div className="mission-victory-card" initial={{ scale: 0.9, y: 18 }} animate={{ scale: 1, y: 0 }}>
                 <div className="mission-kicker">Recompensa desbloqueada</div>
                 <AvatarFigure size="lg" presetId={profile?.avatar_preset} skin={profile?.avatar_skin} hair={profile?.avatar_hair} hat={profile?.avatar_hat} top={profile?.avatar_top} shoes={profile?.avatar_shoes} animated pose="victory" emote="happy" />
-                <h2>Missao concluida</h2>
-                <p>XP salvo, progresso atualizado e proxima fase liberada.</p>
+                <h2>Missão concluída</h2>
+                <p>XP salvo, progresso atualizado e próxima fase liberada.</p>
                 <div className="mission-reward-row">
                   <span>+{lesson.xp_reward} XP</span>
                   <span>+1 streak</span>
@@ -1160,7 +1160,7 @@ export function GameMissionExperience({ lesson, track }: { lesson: Lesson; track
           )}
         </AnimatePresence>
 
-        <nav className="mission-stepper" aria-label="Etapas da missao">
+        <nav className="mission-stepper" aria-label="Etapas da missão">
           {specs.length > 1 && (
             <div className="mission-step mission-step-progress active">
               <span>{activeStepIndex + 1}/{specs.length}</span>
@@ -1168,7 +1168,7 @@ export function GameMissionExperience({ lesson, track }: { lesson: Lesson; track
             </div>
           )}
           {[
-            ['briefing', 'Missao'],
+            ['briefing', 'Missão'],
             ['learn', 'Aprender'],
             ['code', 'Editor'],
           ].map(([key, label], index) => (
@@ -1182,7 +1182,7 @@ export function GameMissionExperience({ lesson, track }: { lesson: Lesson; track
         {stage === 'briefing' && (
           <motion.section className="mission-briefing" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
             <div className="mission-briefing-copy">
-              <div className="mission-kicker">{track?.title ?? 'CodeQuest'} / {spec.badge} / Missao {lesson.order_index}</div>
+              <div className="mission-kicker">{track?.title ?? 'CodeQuest'} / {spec.badge} / Missão {lesson.order_index}</div>
               <h1>{lesson.title}</h1>
               <p>{lesson.description}</p>
               <div className="mission-stat-grid">
@@ -1194,7 +1194,7 @@ export function GameMissionExperience({ lesson, track }: { lesson: Lesson; track
                 <Stat label="Dificuldade" value={difficulty} />
               </div>
               <button className="btn-primary mission-primary-action" type="button" onClick={() => setStage('learn')}>
-                Iniciar missao
+                Iniciar missão
               </button>
             </div>
             <div className="mission-illustration">
@@ -1220,12 +1220,12 @@ export function GameMissionExperience({ lesson, track }: { lesson: Lesson; track
                 <div className="example-card wrong">
                   <span>Erro comum</span>
                   <code>{spec.files.map((file) => file.value).join('\n\n').slice(0, 220)}</code>
-                  <p>Este ponto de partida ainda nao cumpre o objetivo. Ele existe para voce completar a missao com calma.</p>
+                  <p>Este ponto de partida ainda não cumpre o objetivo. Ele existe para você completar a missão com calma.</p>
                 </div>
                 <div className="example-card right">
                   <span>Resultado esperado</span>
                   <code>{spec.solutionFiles.map((file) => file.value).join('\n\n').slice(0, 260)}</code>
-                  <p>Compare a ideia, nao apenas copie. O importante e entender por que funciona.</p>
+                  <p>Compare a ideia, não apenas copie. O importante é entender por que funciona.</p>
                 </div>
               </div>
 
@@ -1288,7 +1288,7 @@ export function GameMissionExperience({ lesson, track }: { lesson: Lesson; track
                   <p>{result.detail}</p>
                 </div>
               )}
-              {!result && <div className="mission-feedback idle">Tente quantas vezes quiser. O sistema valida, explica e deixa voce ajustar sem travar.</div>}
+              {!result && <div className="mission-feedback idle">Tente quantas vezes quiser. O sistema valida, explica e deixa você ajustar sem travar.</div>}
               <button className="btn-primary w-full" type="button" onClick={completeMission} disabled={saving}>
                 {saving ? 'Salvando progresso...' : activeStepIndex < specs.length - 1 ? 'Validar etapa e continuar' : 'Testar e concluir'}
               </button>

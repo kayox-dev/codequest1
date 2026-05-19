@@ -33,10 +33,10 @@ export default function Login() {
         </button>
       </div>
       <div className="auth-divider">
-        <span>ou use email</span>
+        <span>ou use e-mail</span>
       </div>
       <form onSubmit={submit} className="space-y-4">
-        <input className="input-field" name="login-email" autoComplete="email" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <input className="input-field" name="login-email" autoComplete="email" type="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} required />
         <input className="input-field" name="login-password" autoComplete="current-password" type="password" placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)} required />
         <button className="btn-primary w-full" disabled={loading}>
           {loading ? 'Entrando...' : 'Entrar'}

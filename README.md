@@ -1,6 +1,6 @@
 # CodeQuest Completo
 
-Plataforma gamificada em Next.js + Supabase com cadastro, onboarding, trilhas, missoes, XP, progresso e ranking.
+Plataforma gamificada em Next.js + Supabase com cadastro, onboarding, trilhas, missões, XP, progresso e ranking.
 
 ## Rodar localmente
 
@@ -39,7 +39,7 @@ Para o catalogo final de trilhas, a migration `011_consolidate_duplicate_tracks.
 - DevOps
 - Game Development
 
-RLS deve permanecer habilitado para `profiles`, `tracks`, `lessons`, `user_track_progress`, `user_lesson_progress`, `xp_history`, `rankings`, `missions`, `achievements`, `devtags`, `challenges` e tabelas de rewards. A migration `012_harden_profile_visibility.sql` restringe `profiles` ao proprio usuario e usa `rankings` como superficie publica do leaderboard.
+RLS deve permanecer habilitado para `profiles`, `tracks`, `lessons`, `user_track_progress`, `user_lesson_progress`, `xp_history`, `rankings`, `missions`, `achievements`, `devtags`, `challenges` e tabelas de rewards. A migration `012_harden_profile_visibility.sql` restringe `profiles` ao próprio usuário e usa `rankings` como superfície pública do leaderboard.
 
 ## Auth
 

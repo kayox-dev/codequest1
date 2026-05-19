@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 
 const skillLevels = ['iniciante', 'intermediario', 'avancado']
-const goals = ['subir de nivel', 'liberar boss', 'dominar trilhas', 'virar lenda']
+const goals = ['subir de nível', 'liberar boss', 'dominar trilhas', 'virar lenda']
 const langs = ['Frontend', 'Backend', 'Python', 'Java', 'PHP', 'Cybersecurity', 'AI Engineer', 'Mobile', 'DevOps', 'Game Development']
 
 type Draft = {
@@ -20,7 +20,7 @@ export default function Onboarding() {
   const router = useRouter()
   const [username, setUsername] = useState('')
   const [skill, setSkill] = useState('iniciante')
-  const [goal, setGoal] = useState('subir de nivel')
+  const [goal, setGoal] = useState('subir de nível')
   const [chosen, setChosen] = useState<string[]>(['Frontend'])
   const [minutes, setMinutes] = useState(30)
 
@@ -40,7 +40,7 @@ export default function Onboarding() {
           const draft = JSON.parse(raw) as Draft
           setUsername(draft.username || '')
           setSkill(draft.skill || 'iniciante')
-          setGoal(draft.goal || 'subir de nivel')
+          setGoal(draft.goal || 'subir de nível')
           setChosen(draft.languages || ['Frontend'])
           setMinutes(draft.minutes || 30)
         } catch {}
@@ -62,7 +62,7 @@ export default function Onboarding() {
             <div className="sb-s-tag">Criacao premium</div>
             <h1 className="font-display text-4xl font-extrabold mt-1">Monte sua identidade de jogador</h1>
             <p className="text-t2 mt-2 max-w-2xl">
-              Primeiro voce define a base do personagem. Depois abre a oficina do avatar.
+              Primeiro você define a base do personagem. Depois abre a oficina do avatar.
             </p>
           </div>
           <div className="onboarding-hero-badge">
@@ -109,7 +109,7 @@ export default function Onboarding() {
                   <input className="input-field" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Seu nome de guerra" />
                 </FieldCard>
 
-                <FieldCard label="Seu nivel" value={`Nivel ${skill}`}>
+                <FieldCard label="Seu nível" value={`Nível ${skill}`}>
                   <div className="choice-grid choice-grid-3">
                     {skillLevels.map((x) => (
                       <button key={x} onClick={() => setSkill(x)} className={`choice-card ${skill === x ? 'active' : ''}`}>
@@ -120,7 +120,7 @@ export default function Onboarding() {
                   </div>
                 </FieldCard>
 
-                <FieldCard label="Sua missao principal" value={goal}>
+                <FieldCard label="Sua missão principal" value={goal}>
                   <div className="choice-grid">
                     {goals.map((x) => (
                       <button key={x} onClick={() => setGoal(x)} className={`choice-card ${goal === x ? 'active' : ''}`}>
@@ -172,19 +172,19 @@ export default function Onboarding() {
                     <div className="preview-hero-name">{username || '—'}</div>
                   </div>
                   <div className="preview-hero-level">
-                    <span>Nivel</span>
+                    <span>Nível</span>
                     <strong>{skill}</strong>
                   </div>
                 </div>
                 <div className="preview-hero-meta">
-                  <span>Missao: {goal}</span>
+                  <span>Missão: {goal}</span>
                   <span>{minutes} min por dia</span>
                 </div>
               </div>
               <div className="preview-stack">
                 <PreviewTile label="Nome de guerra" value={username || '—'} />
-                <PreviewTile label="Seu nivel" value={`Nivel ${skill}`} />
-                <PreviewTile label="Missao principal" value={goal} />
+                <PreviewTile label="Seu nível" value={`Nível ${skill}`} />
+                <PreviewTile label="Missão principal" value={goal} />
                 <PreviewTile label="Tempo de treino" value={`${minutes} min/dia`} />
               </div>
 
@@ -201,7 +201,7 @@ export default function Onboarding() {
 
               <div className="mt-3 rp-card">
                 <div className="text-xs uppercase tracking-[.18em] text-t3 mb-2">Proximo passo</div>
-                <div className="text-sm text-t2">A proxima tela e so para montar o avatar, sem misturar com os dados do jogador.</div>
+                <div className="text-sm text-t2">A próxima tela é só para montar o avatar, sem misturar com os dados do jogador.</div>
               </div>
             </div>
           </div>

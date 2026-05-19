@@ -11,7 +11,7 @@ export default function Home() {
         <div className="relative max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <div className="inline-flex px-4 py-2 rounded-full bg-accent/15 border border-accent/30 text-accent-2 text-sm font-bold mb-5">
-              🎮 Plataforma gamificada para devs
+              Plataforma gamificada para devs
             </div>
             <h1 className="font-display text-5xl md:text-7xl font-extrabold leading-tight">
               Aprenda código em modo <span className="text-gradient">quest</span>
@@ -30,10 +30,10 @@ export default function Home() {
           </div>
           <div className="glass rounded-3xl p-6 animate-float">
             <div className="grid grid-cols-2 gap-3">
-              {tracks.map((t, i) => (
-                <div key={t} className="card p-4">
-                  <div className="text-3xl mb-3">{icons[i]}</div>
-                  <b>{t}</b>
+              {tracks.map((track, index) => (
+                <div key={track} className="card p-4">
+                  <div className="text-3xl mb-3">{icons[index]}</div>
+                  <b>{track}</b>
                   <div className="text-t-3 text-xs mt-1">0% para novos usuários</div>
                 </div>
               ))}
