@@ -99,7 +99,7 @@ export default function Config() {
 
         <Section title="Conta">
           <EditableRow label="Nome de usuário" sub="Nome exibido no perfil e ranking">
-            <input className="config-input" value={username} onChange={(event) => setUsername(event.target.value)} placeholder="Seu nome de usuário" />
+            <input className="config-input" aria-label="Nome de usuário" value={username} onChange={(event) => setUsername(event.target.value)} placeholder="Seu nome de usuário" />
           </EditableRow>
           <Row label="E-mail" sub={email || 'Carregando...'} action={<span className="config-muted-action">Gerenciado pelo login</span>} />
           <Row label="Nível" sub={`Nível ${profile?.level ?? 1} · ${profile?.xp_total ?? 0} XP · streak ${profile?.streak ?? 0}`} action={<Link className="btn-secondary" href="/perfil">Ver perfil</Link>} />
@@ -120,7 +120,7 @@ export default function Config() {
 
         <Section title="Aparência">
           <EditableRow label="Tema" sub="Alterna visual claro/escuro localmente">
-            <select className="config-select" value={settings.theme} onChange={(event) => updateSetting('theme', event.target.value as Settings['theme'])}>
+            <select className="config-select" aria-label="Tema da interface" value={settings.theme} onChange={(event) => updateSetting('theme', event.target.value as Settings['theme'])}>
               <option value="dark">Dark premium</option>
               <option value="light">Light</option>
             </select>

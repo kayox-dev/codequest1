@@ -72,8 +72,10 @@ export default function Login() {
         <span>ou use e-mail</span>
       </div>
       <form onSubmit={submit} className="space-y-4">
-        <input className="input-field" name="login-email" autoComplete="email" type="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} disabled={loading} required />
-        <input className="input-field" name="login-password" autoComplete="current-password" type="password" placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)} disabled={loading} required />
+        <label className="sr-only" htmlFor="login-email">E-mail</label>
+        <input id="login-email" className="input-field" name="login-email" autoComplete="email" type="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} disabled={loading} required />
+        <label className="sr-only" htmlFor="login-password">Senha</label>
+        <input id="login-password" className="input-field" name="login-password" autoComplete="current-password" type="password" placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)} disabled={loading} required />
         <button className="btn-primary w-full" disabled={loading}>
           {loading ? 'Entrando...' : 'Entrar'}
         </button>

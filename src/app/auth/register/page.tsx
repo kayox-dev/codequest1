@@ -112,9 +112,12 @@ export default function Register() {
         <span>ou use e-mail</span>
       </div>
       <form onSubmit={submit} className="space-y-4">
-        <input className="input-field" name="register-username" autoComplete="nickname" placeholder="Nome de usuário" value={u} onChange={(event) => setU(event.target.value)} disabled={loading} required />
-        <input className="input-field" name="register-email" autoComplete="email" type="email" placeholder="E-mail" value={e} onChange={(event) => setE(event.target.value)} disabled={loading} required />
-        <input className="input-field" name="register-password" autoComplete="new-password" type="password" minLength={6} placeholder="Senha" value={p} onChange={(event) => setP(event.target.value)} disabled={loading} required />
+        <label className="sr-only" htmlFor="register-username">Nome de usuário</label>
+        <input id="register-username" className="input-field" name="register-username" autoComplete="nickname" placeholder="Nome de usuário" value={u} onChange={(event) => setU(event.target.value)} disabled={loading} required />
+        <label className="sr-only" htmlFor="register-email">E-mail</label>
+        <input id="register-email" className="input-field" name="register-email" autoComplete="email" type="email" placeholder="E-mail" value={e} onChange={(event) => setE(event.target.value)} disabled={loading} required />
+        <label className="sr-only" htmlFor="register-password">Senha</label>
+        <input id="register-password" className="input-field" name="register-password" autoComplete="new-password" type="password" minLength={6} placeholder="Senha" value={p} onChange={(event) => setP(event.target.value)} disabled={loading} required />
         <button className="btn-primary w-full" disabled={loading}>
           {loading ? 'Criando conta...' : 'Criar conta zerada'}
         </button>

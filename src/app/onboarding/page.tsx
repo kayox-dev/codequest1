@@ -106,7 +106,7 @@ export default function Onboarding() {
 
               <div className="space-y-4">
                 <FieldCard label="Seu nome" value={username || 'nome de guerra'}>
-                  <input className="input-field" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Seu nome de guerra" />
+                  <input className="input-field" aria-label="Seu nome de guerra" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Seu nome de guerra" />
                 </FieldCard>
 
                 <FieldCard label="Seu nível" value={`Nível ${skill}`}>
@@ -151,7 +151,7 @@ export default function Onboarding() {
                     <span>Tempo por dia</span>
                     <span className="text-accent-2">{minutes} min</span>
                   </div>
-                  <input type="range" min="15" max="120" step="15" value={minutes} onChange={(e) => setMinutes(+e.target.value)} className="w-full" />
+                  <input type="range" min="15" max="120" step="15" value={minutes} onChange={(e) => setMinutes(+e.target.value)} className="w-full" aria-label="Minutos de treino por dia" />
                   <div className="text-xs text-t3 mt-2">Seu ritmo de campanha atual</div>
                 </div>
               </div>

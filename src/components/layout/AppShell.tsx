@@ -103,16 +103,20 @@ export function AppShell({
     () => nav.map(([href, icon, label]) => [href === '__TRACK__' ? trackHref : href, icon, label]),
     [trackHref],
   )
+  const mobileNav = useMemo(
+    () => resolvedNav.filter(([, , label]) => ['Dashboard', 'Trilhas', 'Missões', 'Desafios', 'Perfil'].includes(label)),
+    [resolvedNav],
+  )
   const equippedTag = getEquippedPlayerTag(profile)
 
   return (
     <div className="app-shell">
       <aside className="sidebar">
-        <Link href="/dashboard" className="logo">
+        <Link href="/dashboard" className="logo" aria-label="Ir para o dashboard da CodeQuest">
           <div className="logo-box">🎮</div>
           <span className="logo-text">CodeQuest</span>
         </Link>
-        <nav className="nav">
+        <nav className="nav" aria-label="Navegação principal">
           {resolvedNav.map(([href, icon, label]) => {
             const active =
               path === href ||
@@ -120,8 +124,8 @@ export function AppShell({
               (label === 'Trilhas' && path.startsWith('/trilhas'))
 
             return (
-              <Link key={`${label}-${href}`} href={href} className={`nav-item ${active ? 'active' : ''}`}>
-                <span className="ni">{icon}</span>
+              <Link key={`${label}-${href}`} href={href} className={`nav-item ${active ? 'active' : ''}`} aria-current={active ? 'page' : undefined}>
+                <span className="ni" aria-hidden="true">{icon}</span>
                 {label}
               </Link>
             )
@@ -136,7 +140,7 @@ export function AppShell({
             <div className="xpfill" style={{ width: `${Math.min((profile?.level ?? 1) * 2, 45)}%` }} />
           </div>
         </div>
-        <button onClick={toggleAi} className="btn-secondary mx-3 mb-3 jarvis-button">
+        <button onClick={toggleAi} className="btn-secondary mx-3 mb-3 jarvis-button" aria-label="Abrir assistente Jarvis">
           🤖 IA Jarvis
         </button>
       </aside>
@@ -146,7 +150,7 @@ export function AppShell({
           <Chip icon="🔥" v={profile?.streak ?? 0} l="Streak" />
           <Chip icon="⚡" v={profile?.xp_total ?? 0} l="XP Total" />
           <div className="tb-gap" />
-          <button onClick={toggleAi} className="btn-secondary hidden md:inline-flex jarvis-button">
+          <button onClick={toggleAi} className="btn-secondary hidden md:inline-flex jarvis-button" aria-label="Abrir assistente Jarvis">
             IA
           </button>
           <div className="user-pill">
@@ -172,6 +176,7 @@ export function AppShell({
               router.push('/')
             }}
             className="text-t3 text-xs hover:text-white"
+            aria-label="Sair da conta"
           >
             Sair
           </button>
@@ -183,6 +188,22 @@ export function AppShell({
         </div>
       </div>
 
+      <nav className="mobile-bottom-nav" aria-label="Navegação principal mobile">
+        {mobileNav.map(([href, icon, label]) => {
+          const active =
+            path === href ||
+            path.startsWith(`${href}/`) ||
+            (label === 'Trilhas' && path.startsWith('/trilhas'))
+
+          return (
+            <Link key={`mobile-${label}-${href}`} href={href} className={`mobile-nav-item ${active ? 'active' : ''}`} aria-current={active ? 'page' : undefined}>
+              <span aria-hidden="true">{icon}</span>
+              <strong>{label}</strong>
+            </Link>
+          )
+        })}
+      </nav>
+
       <AiAssistant />
     </div>
   )
@@ -192,8 +213,8 @@ function Chip({ icon, v, l }: { icon: string; v: any; l: string }) {
   const color = l === 'Streak' ? 'var(--gold)' : 'var(--gem)'
 
   return (
-    <div className="chip">
-      <span>{icon}</span>
+    <div className="chip" aria-label={`${l}: ${v}`}>
+      <span aria-hidden="true">{icon}</span>
       <span style={{ color }}>{v}</span>
       <span className="chip-lbl">{l}</span>
     </div>

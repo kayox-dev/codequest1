@@ -54,7 +54,7 @@ export function AiAssistant() {
           <div className="font-display text-sm font-bold text-gradient">🤖 Jarvis CodeQuest</div>
           <div className="text-[11px] text-t3">assistente futurista</div>
         </div>
-        <button onClick={toggleAi} className="text-t3 hover:text-white text-lg leading-none">
+        <button onClick={toggleAi} className="text-t3 hover:text-white text-lg leading-none" aria-label="Fechar assistente Jarvis">
           ✕
         </button>
       </div>
@@ -78,12 +78,13 @@ export function AiAssistant() {
             className="input-field py-2 text-sm"
             value={txt}
             onChange={(e) => setTxt(e.target.value)}
+            aria-label="Mensagem para o Jarvis"
             placeholder="Pergunte algo..."
             onKeyDown={(e) => {
               if (e.key === 'Enter') send()
             }}
           />
-          <button className="btn-primary py-2" onClick={() => send()}>
+          <button className="btn-primary py-2" onClick={() => send()} aria-label="Enviar mensagem para o Jarvis">
             Enviar
           </button>
         </div>
