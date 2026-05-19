@@ -4991,6 +4991,7 @@ button,input,textarea,select{
   min-height:100vh;
   position:relative;
   overflow:hidden;
+  max-width:100%;
   background:
     radial-gradient(circle at 18% 12%, rgba(124,63,255,.28), transparent 28%),
     radial-gradient(circle at 80% 8%, rgba(77,187,255,.18), transparent 24%),
@@ -5064,6 +5065,7 @@ button,input,textarea,select{
   align-items:center;
   justify-content:space-between;
   gap:18px;
+  width:100%;
   max-width:1240px;
   margin:0 auto 56px;
 }
@@ -5072,6 +5074,7 @@ button,input,textarea,select{
   display:flex;
   align-items:center;
   gap:12px;
+  min-width:0;
 }
 
 .cq-intro-brand span{
@@ -5090,6 +5093,9 @@ button,input,textarea,select{
 .cq-intro-brand strong{
   font-family:var(--display);
   font-size:18px;
+  min-width:0;
+  overflow-wrap:normal;
+  word-break:normal;
 }
 
 .cq-intro-skip{
@@ -5114,6 +5120,7 @@ button,input,textarea,select{
 }
 
 .cq-intro-hero{
+  width:100%;
   max-width:1240px;
   min-height:calc(100vh - 150px);
   margin:0 auto;
@@ -5125,6 +5132,7 @@ button,input,textarea,select{
 
 .cq-intro-hero-copy{
   width:min(940px,100%);
+  min-width:0;
 }
 
 .cq-intro-hero-copy h1{
@@ -5136,6 +5144,9 @@ button,input,textarea,select{
   font-weight:900;
   margin:16px 0 24px;
   text-wrap:balance;
+  overflow-wrap:normal;
+  word-break:normal;
+  hyphens:none;
 }
 
 .cq-intro-hero-copy p{
@@ -5143,12 +5154,14 @@ button,input,textarea,select{
   color:var(--t2);
   font-size:clamp(17px,2vw,22px);
   line-height:1.55;
+  overflow-wrap:break-word;
 }
 
 .cq-intro-kicker{
   display:inline-flex;
   align-items:center;
   gap:9px;
+  max-width:100%;
   padding:8px 12px;
   border-radius:999px;
   border:1px solid rgba(155,111,255,.34);
@@ -5171,6 +5184,8 @@ button,input,textarea,select{
 .cq-intro-actions span{
   color:var(--t3);
   font-weight:700;
+  min-width:0;
+  overflow-wrap:anywhere;
 }
 
 .cq-intro-primary{
@@ -5202,6 +5217,7 @@ button,input,textarea,select{
 }
 
 .cq-intro-section{
+  width:100%;
   max-width:1240px;
   margin:0 auto;
   padding:72px 0;
@@ -5210,6 +5226,7 @@ button,input,textarea,select{
 .cq-section-head{
   max-width:720px;
   margin-bottom:26px;
+  min-width:0;
 }
 
 .cq-section-head span{
@@ -5227,6 +5244,10 @@ button,input,textarea,select{
   font-size:clamp(30px,4.2vw,56px);
   line-height:1;
   font-weight:900;
+  text-wrap:balance;
+  overflow-wrap:normal;
+  word-break:normal;
+  hyphens:none;
 }
 
 .cq-feature-grid{
@@ -5239,6 +5260,7 @@ button,input,textarea,select{
   min-height:210px;
   position:relative;
   overflow:hidden;
+  min-width:0;
   padding:20px;
   border-radius:14px;
   border:1px solid rgba(255,255,255,.09);
@@ -5271,12 +5293,14 @@ button,input,textarea,select{
   font-size:15px;
   font-weight:900;
   margin:18px 0 8px;
+  overflow-wrap:break-word;
 }
 
 .cq-feature-card p{
   color:var(--t2);
   font-size:13px;
   line-height:1.45;
+  overflow-wrap:break-word;
 }
 
 .cq-feature-card > span{
@@ -5298,6 +5322,7 @@ button,input,textarea,select{
 .cq-track-card{
   position:relative;
   overflow:hidden;
+  min-width:0;
   min-height:306px;
   padding:12px;
   border-radius:16px;
@@ -5325,11 +5350,13 @@ button,input,textarea,select{
   font-size:20px;
   font-weight:900;
   margin:14px 2px 10px;
+  overflow-wrap:break-word;
 }
 
 .cq-track-meta{
   display:flex;
   justify-content:space-between;
+  flex-wrap:wrap;
   gap:8px;
   color:var(--t2);
   font-size:12px;
@@ -5384,6 +5411,7 @@ button,input,textarea,select{
   display:block;
   font-family:var(--display);
   font-size:18px;
+  overflow-wrap:anywhere;
 }
 
 .cq-leader-main span,
@@ -5483,6 +5511,7 @@ button,input,textarea,select{
 @media(max-width:900px){
   .cq-intro-shell{
     padding:18px 14px 36px;
+    overflow-x:hidden;
   }
 
   .cq-intro-topbar{
@@ -5490,11 +5519,22 @@ button,input,textarea,select{
   }
 
   .cq-intro-hero{
+    justify-content:center;
     padding-bottom:34px;
   }
 
+  .cq-intro-hero-copy{
+    max-width:760px;
+  }
+
   .cq-intro-hero-copy h1{
-    font-size:clamp(44px,14vw,78px);
+    font-size:clamp(44px,10vw,72px);
+    line-height:.98;
+  }
+
+  .cq-section-head h2{
+    font-size:clamp(32px,6vw,48px);
+    line-height:1.05;
   }
 
   .cq-track-grid{
@@ -5794,23 +5834,95 @@ button,input,textarea,select{
 }
 
 @media(max-width:560px){
+  .cq-intro-shell{
+    padding:14px 12px 32px;
+  }
+
+  .cq-intro-rift{
+    right:-210px;
+    top:220px;
+    width:340px;
+    height:340px;
+  }
+
   .cq-intro-topbar{
     align-items:flex-start;
     flex-direction:column;
+    gap:12px;
+    margin-bottom:18px;
+  }
+
+  .cq-intro-brand{
+    width:100%;
+  }
+
+  .cq-intro-brand span{
+    width:38px;
+    height:38px;
+    border-radius:11px;
+  }
+
+  .cq-intro-brand strong{
+    font-size:16px;
   }
 
   .cq-intro-skip{
     width:100%;
+    justify-content:center;
+    min-height:42px;
+  }
+
+  .cq-intro-hero{
+    min-height:auto;
+    padding:34px 0 42px;
+    text-align:center;
+  }
+
+  .cq-intro-hero-copy{
+    width:100%;
+    max-width:100%;
+  }
+
+  .cq-intro-hero-copy h1{
+    max-width:10.5ch;
+    margin:14px auto 18px;
+    font-size:clamp(36px,10.8vw,52px);
+    line-height:1.02;
+  }
+
+  .cq-intro-hero-copy p{
+    max-width:34rem;
+    margin:0 auto;
+    font-size:15px;
+    line-height:1.55;
   }
 
   .cq-intro-kicker{
+    justify-content:center;
     letter-spacing:.08em;
     font-size:10px;
+    line-height:1.25;
+    white-space:normal;
+    text-align:center;
   }
 
-  .cq-intro-actions,
+  .cq-intro-actions{
+    width:100%;
+    justify-content:center;
+    gap:10px;
+    margin-top:24px;
+  }
+
+  .cq-intro-actions span{
+    width:100%;
+    text-align:center;
+    font-size:13px;
+  }
+
   .cq-intro-primary{
     width:100%;
+    min-height:48px;
+    padding:0 16px;
   }
 
   .cq-feature-grid,
@@ -5822,8 +5934,79 @@ button,input,textarea,select{
     padding:48px 0;
   }
 
+  .cq-section-head{
+    max-width:100%;
+    margin-bottom:18px;
+    text-align:center;
+  }
+
+  .cq-section-head span{
+    line-height:1.25;
+    letter-spacing:.1em;
+  }
+
+  .cq-section-head h2{
+    font-size:clamp(28px,8vw,38px);
+    line-height:1.08;
+  }
+
+  .cq-feature-card{
+    min-height:auto;
+    padding:16px;
+    border-radius:12px;
+  }
+
+  .cq-track-card{
+    min-height:auto;
+    padding:10px;
+    border-radius:14px;
+  }
+
+  .cq-track-art{
+    height:136px;
+  }
+
+  .cq-track-card h3{
+    font-size:18px;
+  }
+
+  .cq-track-card button{
+    margin-top:14px;
+  }
+
+  .cq-leaderboard{
+    border-radius:16px;
+  }
+
   .cq-leader-row{
+    grid-template-columns:44px minmax(0,1fr);
     padding:16px 14px;
+  }
+
+  .cq-leader-rank{
+    width:38px;
+    height:38px;
+    border-radius:11px;
+  }
+
+  .cq-leader-main strong{
+    font-size:16px;
+  }
+
+  .cq-intro-final{
+    margin-top:20px;
+    padding:48px 16px;
+    border-radius:18px;
+  }
+
+  .cq-intro-final h2{
+    font-size:clamp(30px,8.5vw,42px);
+    line-height:1.08;
+  }
+
+  .cq-intro-final p{
+    font-size:14px;
+    line-height:1.5;
   }
 
   .onboarding-shell{
