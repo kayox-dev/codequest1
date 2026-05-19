@@ -61,6 +61,8 @@ html,body{
   background:var(--bg);
   color:var(--t1);
   font-family:var(--font);
+  max-width:100%;
+  overflow-x:hidden;
 }
 
 body{
@@ -3142,6 +3144,8 @@ button,input,textarea,select{
     var(--bg);
   padding:24px;
   overflow-y:auto;
+  overflow-x:hidden;
+  width:100%;
 }
 
 .onboarding-shell{
@@ -3152,6 +3156,8 @@ button,input,textarea,select{
   min-height:100vh;
   height:auto;
   overflow-y:auto;
+  overflow-x:hidden;
+  width:100%;
 }
 
 .auth-card{
@@ -3164,6 +3170,8 @@ button,input,textarea,select{
 
 .profile-creator{
   width:min(1120px,100%);
+  max-width:100%;
+  min-width:0;
   background:linear-gradient(180deg,rgba(17,17,38,.96),rgba(11,11,24,.94));
   border:1px solid var(--border2);
   box-shadow:0 24px 80px rgba(0,0,0,.35);
@@ -3177,6 +3185,17 @@ button,input,textarea,select{
   justify-content:space-between;
   gap:16px;
   margin-bottom:18px;
+  min-width:0;
+}
+
+.onboarding-hero > div:first-child{
+  min-width:0;
+}
+
+.onboarding-hero h1,
+.onboarding-hero p{
+  max-width:100%;
+  overflow-wrap:anywhere;
 }
 
 .onboarding-hero-badge{
@@ -3234,6 +3253,7 @@ button,input,textarea,select{
 .onboarding-progress-rail{
   margin:0 auto 24px;
   max-width:720px;
+  width:100%;
   background:rgba(11,11,24,.42);
   border:1px solid var(--border);
   border-radius:20px;
@@ -3294,6 +3314,7 @@ button,input,textarea,select{
   grid-template-columns:1.02fr .98fr;
   gap:20px;
   align-items:start;
+  min-width:0;
 }
 
 .onboarding-panel{
@@ -3301,6 +3322,8 @@ button,input,textarea,select{
   border:1px solid var(--border);
   border-radius:22px;
   padding:18px;
+  min-width:0;
+  max-width:100%;
 }
 
 .onboarding-panel-head{
@@ -3309,6 +3332,7 @@ button,input,textarea,select{
   justify-content:space-between;
   gap:12px;
   margin-bottom:14px;
+  min-width:0;
 }
 
 .onboarding-panel-chip{
@@ -3327,6 +3351,8 @@ button,input,textarea,select{
   border:1px solid var(--border);
   border-radius:18px;
   padding:14px;
+  min-width:0;
+  max-width:100%;
 }
 
 .field-card-head{
@@ -3352,6 +3378,7 @@ button,input,textarea,select{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
   gap:10px;
+  min-width:0;
 }
 
 .choice-grid-3{
@@ -3367,6 +3394,8 @@ button,input,textarea,select{
   color:var(--t1);
   cursor:pointer;
   transition:all .14s;
+  min-width:0;
+  width:100%;
 }
 
 .choice-card:hover{
@@ -3390,6 +3419,8 @@ button,input,textarea,select{
   font-size:13px;
   font-weight:800;
   text-transform:none;
+  overflow-wrap:anywhere;
+  line-height:1.2;
 }
 
 .choice-sub{
@@ -3397,6 +3428,7 @@ button,input,textarea,select{
   margin-top:4px;
   font-size:10px;
   color:var(--t3);
+  overflow-wrap:anywhere;
 }
 
 @keyframes choicePop{
@@ -3417,6 +3449,8 @@ button,input,textarea,select{
   border:1px solid var(--border2);
   border-radius:22px;
   padding:20px;
+  min-width:0;
+  max-width:100%;
 }
 
 .profile-preview-card{
@@ -3424,6 +3458,8 @@ button,input,textarea,select{
   border:1px solid var(--border);
   border-radius:20px;
   padding:18px;
+  min-width:0;
+  max-width:100%;
 }
 
 .preview-hero-card{
@@ -3433,6 +3469,7 @@ button,input,textarea,select{
   padding:16px;
   margin-bottom:14px;
   box-shadow:0 12px 30px rgba(0,0,0,.18);
+  min-width:0;
 }
 
 .preview-hero-top{
@@ -3440,6 +3477,7 @@ button,input,textarea,select{
   align-items:flex-start;
   justify-content:space-between;
   gap:12px;
+  min-width:0;
 }
 
 .preview-hero-label{
@@ -3454,6 +3492,8 @@ button,input,textarea,select{
   font-family:var(--display);
   font-size:24px;
   font-weight:800;
+  overflow-wrap:anywhere;
+  line-height:1.1;
 }
 
 .preview-hero-level{
@@ -3486,6 +3526,12 @@ button,input,textarea,select{
   margin-top:12px;
   font-size:11px;
   color:var(--t2);
+  min-width:0;
+}
+
+.preview-hero-meta span{
+  min-width:0;
+  overflow-wrap:anywhere;
 }
 
 .preview-stack{
@@ -3503,6 +3549,7 @@ button,input,textarea,select{
   align-items:center;
   justify-content:space-between;
   gap:10px;
+  min-width:0;
 }
 
 .preview-label{
@@ -3517,6 +3564,9 @@ button,input,textarea,select{
   font-size:13px;
   font-weight:800;
   color:var(--t1);
+  min-width:0;
+  text-align:right;
+  overflow-wrap:anywhere;
 }
 
 .profile-avatar-stage{
@@ -5604,6 +5654,7 @@ button,input,textarea,select{
     height:auto;
     min-height:100vh;
     align-items:flex-start;
+    overflow-x:hidden;
   }
   .avatar-lab-layout,
   .config-avatar-main .avatar-lab-layout,
@@ -5624,9 +5675,16 @@ button,input,textarea,select{
   }
   .onboarding-hero{
     flex-direction:column;
+    width:100%;
+  }
+  .onboarding-hero-badge{
+    max-width:100%;
   }
   .profile-creator{
     padding:20px;
+    width:100%;
+    border-radius:20px;
+    overflow:hidden;
   }
   .avatar-lab{
     padding:14px;
@@ -5769,7 +5827,118 @@ button,input,textarea,select{
   }
 
   .onboarding-shell{
-    padding:12px 10px 28px;
+    padding:10px 8px 28px;
+  }
+  .profile-creator{
+    padding:14px;
+    border-radius:18px;
+  }
+  .onboarding-hero{
+    gap:10px;
+    margin-bottom:12px;
+  }
+  .onboarding-hero h1{
+    font-size:clamp(28px,9vw,36px);
+    line-height:1.02;
+  }
+  .onboarding-hero p{
+    font-size:13px;
+    line-height:1.45;
+  }
+  .onboarding-hero-badge{
+    width:100%;
+    padding:10px 12px;
+    border-radius:14px;
+  }
+  .wizard-progress{
+    margin-bottom:14px;
+  }
+  .wizard-line{
+    width:min(44px,16vw);
+  }
+  .onboarding-progress-rail{
+    padding:12px;
+    border-radius:16px;
+    margin-bottom:14px;
+  }
+  .onboarding-progress-info,
+  .onboarding-progress-labels{
+    letter-spacing:.1em;
+  }
+  .wizard-grid{
+    gap:14px;
+  }
+  .onboarding-panel{
+    padding:12px;
+    border-radius:16px;
+  }
+  .onboarding-panel-head{
+    flex-direction:column;
+    gap:8px;
+  }
+  .onboarding-panel-chip{
+    width:100%;
+    text-align:center;
+    white-space:normal;
+  }
+  .field-card,
+  .onboarding-range{
+    padding:12px;
+    border-radius:14px;
+  }
+  .field-value{
+    font-size:14px;
+    overflow-wrap:anywhere;
+  }
+  .choice-grid,
+  .choice-grid-2,
+  .choice-grid-3{
+    grid-template-columns:1fr;
+    gap:8px;
+  }
+  .choice-card{
+    padding:11px 12px;
+    border-radius:14px;
+    min-height:0;
+  }
+  .choice-card-small{
+    min-height:56px;
+  }
+  .profile-preview{
+    padding:12px;
+    border-radius:16px;
+  }
+  .profile-preview-card{
+    padding:12px;
+    border-radius:15px;
+  }
+  .preview-hero-card{
+    padding:12px;
+    border-radius:15px;
+  }
+  .preview-hero-top,
+  .preview-hero-meta,
+  .preview-tile{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .preview-hero-level{
+    width:100%;
+    text-align:left;
+  }
+  .preview-hero-name{
+    font-size:20px;
+  }
+  .preview-value{
+    text-align:left;
+  }
+  .profile-preview .rp-card{
+    padding:12px;
+    border-radius:14px;
+  }
+  .profile-preview .xp-pill{
+    max-width:100%;
+    overflow-wrap:anywhere;
   }
   .avatar-lab .onboarding-hero h1{
     font-size:26px;
