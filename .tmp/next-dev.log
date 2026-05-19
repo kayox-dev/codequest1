@@ -1,0 +1,13 @@
+
+> codequest-completo@2.1.0 dev
+> next dev
+
+▲ Next.js 16.2.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://10.0.0.216:3000
+- Environments: .env.local
+✓ Ready in 963ms
+Creating turbopack project {
+  dir: 'C:\\Users\\vavad\\Downloads\\codequest-completo-layout-original\\codequest-completo',
+  testMode: true
+}

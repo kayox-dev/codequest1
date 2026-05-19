@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" role="img" aria-labelledby="title desc">
+  <title id="title">PHP track illustration</title>
+  <desc id="desc">Server-side script capsule for the PHP track.</desc>
+  <rect width="320" height="200" rx="24" fill="#0B0B18"/>
+  <ellipse cx="160" cy="100" rx="112" ry="68" fill="#8B5CF6" opacity=".16"/>
+  <rect x="62" y="56" width="196" height="88" rx="22" fill="#111126" stroke="#8B5CF6" stroke-opacity=".5"/>
+  <path d="M98 100l22-20M98 100l22 20M222 80l-22 20 22 20" stroke="#EEEAFF" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" opacity=".65"/>
+  <text x="160" y="112" text-anchor="middle" fill="#8B5CF6" font-family="Arial, sans-serif" font-size="30" font-weight="900">PHP</text>
+</svg>

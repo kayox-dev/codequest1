@@ -1,0 +1,42 @@
+insert into public.lessons(track_id,title,description,content,xp_reward,order_index,type)
+select t.id,x.title,x.description,x.content::jsonb,x.xp,x.ord,x.type
+from public.tracks t
+join (values
+  ('css','Grid responsivo','Monte layouts em colunas que se adaptam.','[{"title":"Grid","text":"CSS Grid organiza interfaces em linhas e colunas independentes."}]',100,4,'codigo'),
+  ('css','Animacoes e transicoes','Crie microinteracoes suaves.','[{"title":"Movimento","text":"Transicoes e hover deixam a interface mais clara e viva."}]',100,5,'codigo'),
+  ('css','Projeto CSS','Finalize uma tela responsiva completa.','[{"title":"Boss CSS","text":"Combine layout, responsividade e acabamento visual."}]',100,6,'projeto'),
+  ('javascript','Funcoes','Crie logica reutilizavel.','[{"title":"Funcoes","text":"Funcoes recebem entradas, executam uma regra e devolvem resultados."}]',100,2,'codigo'),
+  ('javascript','Arrays e map','Transforme listas de dados.','[{"title":"Arrays","text":"map percorre uma lista e cria outra com os itens transformados."}]',110,3,'codigo'),
+  ('javascript','DOM','Altere conteudo da pagina com JavaScript.','[{"title":"DOM","text":"O DOM permite encontrar elementos e atualizar texto, classes e eventos."}]',110,4,'codigo'),
+  ('javascript','Eventos','Responda a cliques e interacoes.','[{"title":"Eventos","text":"addEventListener conecta uma acao do usuario a uma funcao."}]',120,5,'codigo'),
+  ('javascript','Projeto JavaScript','Monte uma interacao completa.','[{"title":"Boss JS","text":"Una funcoes, DOM e eventos em uma experiencia interativa."}]',150,6,'projeto'),
+  ('react','Props','Passe dados entre componentes.','[{"title":"Props","text":"Props levam informacoes do componente pai para o filho."}]',120,2,'codigo'),
+  ('react','Estado','Atualize a interface com useState.','[{"title":"State","text":"Estado guarda valores que mudam e redesenham a tela."}]',130,3,'codigo'),
+  ('react','Listas','Renderize colecoes com map e key.','[{"title":"Listas","text":"map cria elementos repetidos e key ajuda o React a acompanhar cada item."}]',130,4,'codigo'),
+  ('react','Hooks','Organize comportamento em componentes.','[{"title":"Hooks","text":"Hooks permitem usar recursos do React dentro de funcoes."}]',140,5,'codigo'),
+  ('react','Projeto React','Construa uma interface componentizada.','[{"title":"Boss React","text":"Combine componentes, props, estado e listas."}]',170,6,'projeto'),
+  ('typescript','Interfaces','Descreva formatos de objetos.','[{"title":"Interfaces","text":"Interfaces definem contratos para dados usados pela aplicacao."}]',120,2,'codigo'),
+  ('typescript','Funcoes tipadas','Declare parametros e retorno.','[{"title":"Tipos em funcoes","text":"Tipar entradas e saidas torna regras mais previsiveis."}]',130,3,'codigo'),
+  ('typescript','Tipos em componentes','Use contratos em UI.','[{"title":"UI tipada","text":"Props tipadas reduzem erros em componentes."}]',130,4,'codigo'),
+  ('typescript','Projeto TypeScript','Refatore codigo com seguranca.','[{"title":"Boss TS","text":"Aplique tipos em objetos, funcoes e dados da interface."}]',150,5,'projeto'),
+  ('nodejs','Rotas','Crie endpoints para dados.','[{"title":"Rotas","text":"Rotas conectam URLs a respostas da API."}]',130,2,'codigo'),
+  ('nodejs','JSON','Responda dados estruturados.','[{"title":"JSON","text":"APIs modernas trocam dados em JSON."}]',140,3,'codigo'),
+  ('nodejs','Validacao','Cheque entradas antes de processar.','[{"title":"Validacao","text":"Backend precisa validar dados antes de salvar ou responder."}]',150,4,'codigo'),
+  ('nodejs','Projeto API','Monte uma API pequena.','[{"title":"Boss Node","text":"Una rotas, JSON e regras de validacao."}]',180,5,'projeto'),
+  ('python','Funcoes','Organize logica reutilizavel.','[{"title":"Funcoes","text":"Funcoes em Python agrupam passos e retornam valores."}]',100,2,'codigo'),
+  ('python','Listas','Percorra colecoes com for.','[{"title":"Listas","text":"for percorre itens de uma lista de forma clara."}]',110,3,'codigo'),
+  ('python','Condicionais','Controle o fluxo com if.','[{"title":"Condicionais","text":"if decide qual caminho o programa deve seguir."}]',120,4,'codigo'),
+  ('python','Projeto Python','Resolva uma automacao simples.','[{"title":"Boss Python","text":"Combine funcoes, listas e condicionais."}]',140,5,'projeto'),
+  ('git','Branches','Trabalhe em linhas separadas.','[{"title":"Branch","text":"Branches isolam mudancas antes de juntar no projeto principal."}]',80,2,'teoria'),
+  ('git','Pull request','Revise mudancas antes de publicar.','[{"title":"PR","text":"Pull requests organizam revisao, conversa e integracao."}]',80,3,'teoria'),
+  ('git','Fluxo completo','Simule um ciclo profissional.','[{"title":"Boss Git","text":"Crie branch, commit e prepare a entrega."}]',90,4,'projeto'),
+  ('apis','Fetch','Consuma dados externos.','[{"title":"Fetch","text":"fetch faz requisicoes HTTP a partir do JavaScript."}]',120,2,'codigo'),
+  ('apis','POST JSON','Envie dados para uma API.','[{"title":"POST","text":"POST cria ou envia informacoes estruturadas."}]',130,3,'codigo'),
+  ('apis','Erros HTTP','Trate falhas de rede.','[{"title":"Status","text":"Codigos HTTP ajudam a entender sucesso e erro."}]',120,4,'codigo'),
+  ('apis','Projeto APIs','Conecte uma tela a dados.','[{"title":"Boss APIs","text":"Una fetch, JSON e tratamento de erro."}]',130,5,'projeto'),
+  ('banco-de-dados','Select','Consulte registros com filtros.','[{"title":"SELECT","text":"SELECT busca linhas e colunas especificas."}]',120,2,'codigo'),
+  ('banco-de-dados','Relacionamentos','Conecte tabelas por chaves.','[{"title":"Relacoes","text":"Chaves relacionam entidades diferentes no banco."}]',130,3,'codigo'),
+  ('banco-de-dados','Agregacoes','Calcule totais e contagens.','[{"title":"Agregacao","text":"COUNT, SUM e GROUP BY resumem dados."}]',130,4,'codigo'),
+  ('banco-de-dados','Projeto SQL','Monte uma consulta completa.','[{"title":"Boss SQL","text":"Combine filtros, ordenacao e agregacoes."}]',140,5,'projeto')
+) as x(slug,title,description,content,xp,ord,type) on t.slug=x.slug
+on conflict do nothing;

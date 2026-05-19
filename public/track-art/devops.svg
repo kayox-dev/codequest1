@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" role="img" aria-labelledby="title desc">
+  <title id="title">DevOps track illustration</title>
+  <desc id="desc">Pipeline and deployment loop for the DevOps track.</desc>
+  <rect width="320" height="200" rx="24" fill="#0B0B18"/>
+  <circle cx="94" cy="100" r="34" fill="#111126" stroke="#F59E0B" stroke-width="5"/>
+  <circle cx="226" cy="100" r="34" fill="#111126" stroke="#4DBBFF" stroke-width="5"/>
+  <path d="M130 84h58l-12-12M190 116h-58l12 12" fill="none" stroke="#F59E0B" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="72" y="88" width="44" height="24" rx="6" fill="#F59E0B" opacity=".18"/>
+  <path d="M211 96l12 12 20-26" fill="none" stroke="#2ECC71" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="160" cy="100" r="86" fill="#F59E0B" opacity=".08"/>
+</svg>

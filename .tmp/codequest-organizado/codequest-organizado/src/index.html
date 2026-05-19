@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>CodeQuest</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<!-- ═══ SIDEBAR ═══ -->
+<aside class="sidebar">
+  <div class="logo">
+    <div class="logo-box">🎮</div>
+    <span class="logo-text">CodeQuest</span>
+  </div>
+  <nav>
+    <div class="nav-item active" onclick="showPage('dashboard',this)"><span class="ni">⊞</span> Dashboard</div>
+    <div class="nav-item" onclick="showPage('trilhas',this)"><span class="ni">🗺</span> Trilhas</div>
+    <div class="nav-item" onclick="showPage('desafios',this)"><span class="ni">⚡</span> Desafios</div>
+    <div class="nav-item" onclick="showPage('missoes',this)"><span class="ni">🎯</span> Missões</div>
+    <div class="nav-item" onclick="showPage('ranking',this)"><span class="ni">🏆</span> Ranking</div>
+    <div class="nav-item" onclick="showPage('skilltree',this)"><span class="ni">🌿</span> Skill Tree</div>
+    <div class="nav-item" onclick="showPage('devtags',this)"><span class="ni">🏷</span> DevTags</div>
+    <div class="nav-item" onclick="showPage('conquistas',this)"><span class="ni">🥇</span> Conquistas</div>
+    <div class="nav-item" onclick="showPage('perfil',this)"><span class="ni">👤</span> Perfil</div>
+    <div class="nav-item" onclick="showPage('config',this)"><span class="ni">⚙</span> Configurações</div>
+  </nav>
+  <div class="sb-season">
+    <div class="sb-s-tag">Temporada 1</div>
+    <div class="sb-s-title">Frontend Warrior</div>
+    <div class="sb-s-timer">Termina em 12d 14h 22m</div>
+    <div class="sb-s-icon">⚔️</div>
+    <div class="bar"><div class="bar-fill" style="background:linear-gradient(90deg,var(--accent),var(--accent2));width:45%"></div></div>
+  </div>
+  <div class="sb-invite">
+    <div class="sb-inv-title">Convide amigos</div>
+    <div class="sb-inv-sub">Ganhe XP bônus!</div>
+    <div class="avatars">
+      <div class="av-sm" style="background:#e74c3c">A</div>
+      <div class="av-sm" style="background:#3498db">B</div>
+      <div class="av-sm" style="background:#2ecc71">C</div>
+      <div class="av-sm av-more">+2</div>
+    </div>
+    <button class="btn-inv">Convidar</button>
+  </div>
+</aside>
+
+<!-- ═══ MAIN WRAP ═══ -->
+<div class="wrap">
+  <header class="topbar">
+    <div class="chip"><span>🔥</span><span style="color:var(--gold)">718</span><span class="chip-lbl">Streak</span></div>
+    <div class="chip"><span>💎</span><span style="color:var(--gem)">7.617</span><span class="chip-lbl">XP Total</span></div>
+    <div class="chip"><span>🔮</span><span style="color:var(--accent2)">35</span><span class="chip-lbl">Gemas</span></div>
+    <div class="tb-gap"></div>
+    <div class="user-pill">
+      <div class="user-av">DM</div>
+      <div><div class="user-name">DevMaster</div><div class="user-lvl">Nível 24</div></div>
+      <span style="color:var(--t3);font-size:12px">▾</span>
+    </div>
+  </header>
+
+  <div class="content-area">
+
+    <!-- ══════ DASHBOARD ══════ -->
+    <div id="page-dashboard" class="page active">
+      <div class="dash-main">
+        <div>
+          <div class="welcome">Bem-vindo de volta, DevMaster! 👋</div>
+          <div class="welcome-sub">Continue sua jornada e evolua suas habilidades.</div>
+        </div>
+        <div class="trail-hero">
+          <div class="trail-hero-icon">💻</div>
+          <div class="trail-hero-meta">
+            <div class="th-lbl">Sua trilha atual</div>
+            <div class="th-name">Frontend</div>
+          </div>
+          <div class="th-lvlbadge"><span style="font-size:8px">nível</span><span>24</span></div>
+          <div class="th-xp">
+            <div class="th-xp-txt">3.240 / 4.000 XP</div>
+            <div class="bar"><div class="bar-fill" style="background:linear-gradient(90deg,var(--accent),var(--accent2));width:81%"></div></div>
+          </div>
+          <div><div class="th-pct">68%</div><div class="th-pct-lbl">de conclusão</div></div>
+        </div>
+        <div>
+          <div class="sec-title">Continue aprendendo</div>
+          <div class="steps-h">
+            <div class="step-node"><div class="step-c done">✓</div><div class="step-lbl">HTML Básico</div></div>
+            <div class="step-line done"></div>
+            <div class="step-node"><div class="step-c done">✓</div><div class="step-lbl">Tags HTML</div></div>
+            <div class="step-line done"></div>
+            <div class="step-node"><div class="step-c done">✓</div><div class="step-lbl">Forms</div></div>
+            <div class="step-line done"></div>
+            <div class="step-node"><div class="step-c done">✓</div><div class="step-lbl">CSS Básico</div></div>
+            <div class="step-line done"></div>
+            <div class="step-node"><div class="step-c active">📖</div><div class="step-lbl">Flexbox</div></div>
+            <div class="step-line"></div>
+            <div class="step-node"><div class="step-c locked">🔒</div><div class="step-lbl">JavaScript</div></div>
+            <div class="step-line"></div>
+            <div class="step-node"><div class="step-c locked">🔒</div><div class="step-lbl">DOM</div></div>
+          </div>
+          <div class="lesson-card">
+            <div class="lc-icon">💻</div>
+            <div class="lc-info">
+              <div class="lc-title">Flexbox</div>
+              <div class="lc-desc">Aprenda a criar layouts flexíveis e responsivos usando Flexbox.</div>
+              <div class="xp-pill">🔮 +150 XP</div>
+            </div>
+            <button class="btn-go" onclick="showPage('trilhas',document.querySelector('[onclick*=trilhas]'))">Continuar lição ›</button>
+          </div>
+        </div>
+        <div>
+          <div class="missions-hdr">
+            <div class="sec-title" style="margin-bottom:0">Missões diárias</div>
+            <div class="timer-lbl">🕐 Atualiza em 14h 22m</div>
+          </div>
+          <div class="missions-grid">
+            <div class="mc">
+              <div class="mc-top"><div class="mc-icon" style="background:var(--orange-dim,rgba(255,107,53,.12))">💻</div><div><div class="mc-title">Complete 2 desafios de HTML</div><div class="mc-sub">Trilha Frontend</div></div></div>
+              <div class="mc-prog"><span>1/2</span><span style="color:var(--accent2);font-weight:600">+250 XP</span></div>
+              <div class="bar"><div class="bar-fill" style="background:var(--orange);width:50%"></div></div>
+            </div>
+            <div class="mc">
+              <div class="mc-top"><div class="mc-icon" style="background:rgba(77,187,255,.1)">🖼</div><div><div class="mc-title">Resolva 1 desafio de CSS</div><div class="mc-sub">Trilha Frontend</div></div></div>
+              <div class="mc-prog"><span>0/1</span><span style="color:var(--accent2);font-weight:600">+200 XP</span></div>
+              <div class="bar"><div class="bar-fill" style="background:var(--gem);width:0%"></div></div>
+            </div>
+            <div class="mc">
+              <div class="mc-top"><div class="mc-icon" style="background:var(--accent-dim)">🔮</div><div><div class="mc-title">Mantenha seu streak diário</div><div class="mc-sub">Geral</div></div><div class="mc-check">✓</div></div>
+              <div class="mc-prog"><span>1/1</span><span style="color:var(--accent2);font-weight:600">+100 XP</span></div>
+              <div class="bar"><div class="bar-fill" style="background:var(--green);width:100%"></div></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+            <div class="sec-title" style="margin-bottom:0">Desafios recomendados</div>
+            <span style="font-size:12.5px;color:var(--accent2);cursor:pointer">Ver todos</span>
+          </div>
+          <div class="chal-grid">
+            <div class="cc"><div class="cc-title">Landing Page Responsiva</div><span class="badge hard">Difícil</span></div>
+            <div class="cc"><div class="cc-title">Menu Animado</div><span class="badge med">Médio</span></div>
+            <div class="cc"><div class="cc-title">Formulário Completo</div><span class="badge easy">Fácil</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="right-panel" id="rp-dashboard"></div>
+    </div>
+
+    <!-- ══════ TRILHAS ══════ -->
+    <div id="page-trilhas" class="page">
+      <div class="trilhas-main">
+        <div class="section-hero">
+          <div>
+            <div class="sh-meta">Seção 3, Unidade 1</div>
+            <div class="sh-title">Discute elementos,<br>tags e atributos HTML</div>
+          </div>
+          <div class="sh-icon">📋</div>
+        </div>
+        <div class="stars-row">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <div class="trail-list">
+          <!-- Done 1 -->
+          <div class="trail-item">
+            <div class="trail-node done-n">✓</div>
+            <div class="trail-line done-l"></div>
+          </div>
+          <!-- Done 2 -->
+          <div class="trail-item">
+            <div class="trail-node done-n">✓</div>
+            <div class="trail-line"></div>
+          </div>
+          <!-- Active -->
+          <div class="trail-item">
+            <div class="trail-node active-n">📖</div>
+            <div class="trail-line"></div>
+          </div>
+          <!-- Active lesson card -->
+          <div class="lesson-info-card">
+            <div class="lic-tag">ATUAL</div>
+            <div class="lic-title">Tags HTML</div>
+            <div class="lic-desc">Aprenda sobre as principais tags utilizadas em HTML.</div>
+            <div class="lic-xp">🔒 +75 XP</div>
+            <button class="btn-continue">Continuar lição</button>
+          </div>
+          <div class="trail-line" style="background:rgba(124,63,255,.2)"></div>
+          <!-- Locked 1 -->
+          <div class="trail-item">
+            <div class="trail-node locked-n">🔒</div>
+            <div class="trail-line"></div>
+          </div>
+          <div class="locked-lesson">
+            <div class="trail-node locked-n" style="width:48px;height:48px;font-size:18px;flex-shrink:0">🔒</div>
+            <div class="ll-info">
+              <div class="ll-title">Atributos HTML</div>
+              <div class="ll-sub">Complete a lição anterior para desbloquear</div>
+            </div>
+            <div class="ll-num">4</div>
+          </div>
+          <div class="trail-line"></div>
+          <!-- Locked 2 -->
+          <div class="trail-item">
+            <div class="trail-node locked-n">🔒</div>
+            <div class="trail-line"></div>
+          </div>
+          <div class="locked-lesson">
+            <div class="trail-node locked-n" style="width:48px;height:48px;font-size:18px;flex-shrink:0">🔒</div>
+            <div class="ll-info">
+              <div class="ll-title">Listas em HTML</div>
+              <div class="ll-sub">Complete a lição anterior para desbloquear</div>
+            </div>
+            <div class="ll-num">5</div>
+          </div>
+          <div class="trail-line"></div>
+          <!-- Locked 3 -->
+          <div class="trail-item">
+            <div class="trail-node locked-n">🔒</div>
+            <div class="trail-line"></div>
+          </div>
+          <div class="locked-lesson">
+            <div class="trail-node locked-n" style="width:48px;height:48px;font-size:18px;flex-shrink:0">🔒</div>
+            <div class="ll-info">
+              <div class="ll-title">Links e Âncoras</div>
+              <div class="ll-sub">Complete a lição anterior para desbloquear</div>
+            </div>
+            <div class="ll-num">6</div>
+          </div>
+        </div>
+      </div>
+      <div class="right-panel" id="rp-trilhas"></div>
+    </div>
+
+    <!-- ══════ DESAFIOS ══════ -->
+    <div id="page-desafios" class="page">
+      <div class="desafios-main">
+        <div class="sec-title">Desafios</div>
+        <div class="filter-row">
+          <button class="filter-btn active">Todos</button>
+          <button class="filter-btn">Frontend</button>
+          <button class="filter-btn">Backend</button>
+          <button class="filter-btn">Algoritmos</button>
+          <button class="filter-btn">Fácil</button>
+          <button class="filter-btn">Médio</button>
+          <button class="filter-btn">Difícil</button>
+        </div>
+        <div class="desafios-grid">
+          <div class="dc"><div class="dc-tag">Frontend · HTML</div><div class="dc-title">Landing Page Responsiva</div><div class="dc-desc">Crie uma landing page completa e responsiva para um produto fictício.</div><div class="dc-footer"><span class="dc-xp">+400 XP</span><span class="badge hard">Difícil</span></div></div>
+          <div class="dc"><div class="dc-tag">Frontend · CSS</div><div class="dc-title">Menu Animado</div><div class="dc-desc">Desenvolva um menu hambúrguer com animações CSS puras.</div><div class="dc-footer"><span class="dc-xp">+250 XP</span><span class="badge med">Médio</span></div></div>
+          <div class="dc"><div class="dc-tag">Frontend · HTML</div><div class="dc-title">Formulário Completo</div><div class="dc-desc">Monte um formulário de cadastro com validação visual.</div><div class="dc-footer"><span class="dc-xp">+150 XP</span><span class="badge easy">Fácil</span></div></div>
+          <div class="dc"><div class="dc-tag">CSS · Layout</div><div class="dc-title">Grid Galeria</div><div class="dc-desc">Construa uma galeria de fotos usando CSS Grid avançado.</div><div class="dc-footer"><span class="dc-xp">+300 XP</span><span class="badge med">Médio</span></div></div>
+          <div class="dc"><div class="dc-tag">JavaScript</div><div class="dc-title">Quiz Interativo</div><div class="dc-desc">Desenvolva um quiz com timer e pontuação em JavaScript.</div><div class="dc-footer"><span class="dc-xp">+450 XP</span><span class="badge hard">Difícil</span></div></div>
+          <div class="dc"><div class="dc-tag">HTML · Básico</div><div class="dc-title">Cartão de Perfil</div><div class="dc-desc">Crie um cartão de perfil estilizado com HTML e CSS.</div><div class="dc-footer"><span class="dc-xp">+100 XP</span><span class="badge easy">Fácil</span></div></div>
+          <div class="dc"><div class="dc-tag">CSS · Animação</div><div class="dc-title">Loading Spinner</div><div class="dc-desc">Anime um spinner de carregamento criativo apenas com CSS.</div><div class="dc-footer"><span class="dc-xp">+200 XP</span><span class="badge med">Médio</span></div></div>
+          <div class="dc"><div class="dc-tag">JS · DOM</div><div class="dc-title">To-Do List</div><div class="dc-desc">Implemente um gerenciador de tarefas com localStorage.</div><div class="dc-footer"><span class="dc-xp">+350 XP</span><span class="badge med">Médio</span></div></div>
+        </div>
+      </div>
+      <div class="right-panel" id="rp-desafios"></div>
+    </div>
+
+    <!-- ══════ MISSÕES ══════ -->
+    <div id="page-missoes" class="page">
+      <div class="missoes-main">
+        <div class="sec-title">Missões</div>
+        <div class="missoes-tabs">
+          <button class="tab-btn active">Diárias</button>
+          <button class="tab-btn">Semanais</button>
+          <button class="tab-btn">Especiais</button>
+        </div>
+        <div class="missoes-list">
+          <div class="mission-row">
+            <div class="mr-icon" style="background:rgba(255,107,53,.12)">💻</div>
+            <div class="mr-info"><div class="mr-title">Complete 2 desafios de HTML</div><div class="mr-sub">Trilha Frontend</div></div>
+            <div class="mr-prog-wrap"><div style="font-size:10.5px;color:var(--t3);text-align:right">1/2</div><div class="mr-prog-bar"><div class="mr-prog-fill" style="background:var(--orange);width:50%"></div></div></div>
+            <div class="mr-xp">+250 XP</div>
+          </div>
+          <div class="mission-row">
+            <div class="mr-icon" style="background:rgba(77,187,255,.1)">🖼</div>
+            <div class="mr-info"><div class="mr-title">Resolva 1 desafio de CSS</div><div class="mr-sub">Trilha Frontend</div></div>
+            <div class="mr-prog-wrap"><div style="font-size:10.5px;color:var(--t3);text-align:right">0/1</div><div class="mr-prog-bar"><div class="mr-prog-fill" style="background:var(--gem);width:0%"></div></div></div>
+            <div class="mr-xp">+200 XP</div>
+          </div>
+          <div class="mission-row">
+            <div class="mr-icon" style="background:var(--green-dim)">🔥</div>
+            <div class="mr-info"><div class="mr-title">Mantenha seu streak diário</div><div class="mr-sub">Geral</div></div>
+            <div class="mr-prog-wrap"><div style="font-size:10.5px;color:var(--green);text-align:right">1/1</div><div class="mr-prog-bar"><div class="mr-prog-fill" style="background:var(--green);width:100%"></div></div></div>
+            <div class="mr-check">✓</div>
+          </div>
+          <div class="mission-row">
+            <div class="mr-icon" style="background:var(--accent-dim)">📖</div>
+            <div class="mr-info"><div class="mr-title">Complete uma lição da trilha</div><div class="mr-sub">Trilha Frontend</div></div>
+            <div class="mr-prog-wrap"><div style="font-size:10.5px;color:var(--t3);text-align:right">0/1</div><div class="mr-prog-bar"><div class="mr-prog-fill" style="background:var(--accent);width:0%"></div></div></div>
+            <div class="mr-xp">+175 XP</div>
+          </div>
+          <div class="mission-row">
+            <div class="mr-icon" style="background:rgba(245,166,35,.12)">🏆</div>
+            <div class="mr-info"><div class="mr-title">Suba 3 posições no ranking</div><div class="mr-sub">Ranking Global</div></div>
+            <div class="mr-prog-wrap"><div style="font-size:10.5px;color:var(--t3);text-align:right">1/3</div><div class="mr-prog-bar"><div class="mr-prog-fill" style="background:var(--gold);width:33%"></div></div></div>
+            <div class="mr-xp">+300 XP</div>
+          </div>
+        </div>
+      </div>
+      <div class="right-panel" id="rp-missoes"></div>
+    </div>
+
+    <!-- ══════ RANKING ══════ -->
+    <div id="page-ranking" class="page">
+      <div class="ranking-main">
+        <div class="sec-title">Ranking Global</div>
+        <div class="podium">
+          <div class="podium-item">
+            <div class="podium-av silver" style="background:linear-gradient(135deg,#6a6a9a,#4a4a7a)">RS</div>
+            <div class="podium-name">RocketStar</div>
+            <div class="podium-xp">12.450 XP</div>
+            <div class="podium-block s">2</div>
+          </div>
+          <div class="podium-item">
+            <div class="podium-av gold" style="background:linear-gradient(135deg,var(--accent),#a855f7)">CK</div>
+            <div class="podium-name">CodeKing</div>
+            <div class="podium-xp">18.920 XP</div>
+            <div class="podium-block g">1</div>
+          </div>
+          <div class="podium-item">
+            <div class="podium-av bronze" style="background:linear-gradient(135deg,#5a3a2a,#3a2a1a)">PX</div>
+            <div class="podium-name">PixelPro</div>
+            <div class="podium-xp">9.870 XP</div>
+            <div class="podium-block b">3</div>
+          </div>
+        </div>
+        <div class="rank-list">
+          <div class="rank-row"><span class="rank-pos">4</span><div class="rank-av" style="background:linear-gradient(135deg,#e74c3c,#c0392b)">AX</div><span class="rank-name">AlgoXpert</span><span class="rank-streak">🔥 312</span><span class="rank-xp">8.200 XP</span></div>
+          <div class="rank-row"><span class="rank-pos">5</span><div class="rank-av" style="background:linear-gradient(135deg,#2ecc71,#27ae60)">HK</div><span class="rank-name">HackMaster</span><span class="rank-streak">🔥 205</span><span class="rank-xp">7.840 XP</span></div>
+          <div class="rank-row me"><span class="rank-pos" style="color:var(--accent2)">6</span><div class="rank-av" style="background:linear-gradient(135deg,var(--accent),#a855f7)">DM</div><span class="rank-name" style="color:var(--accent2)">DevMaster <span style="font-size:10px;color:var(--t3);font-weight:400">(você)</span></span><span class="rank-streak">🔥 718</span><span class="rank-xp">7.617 XP</span></div>
+          <div class="rank-row"><span class="rank-pos">7</span><div class="rank-av" style="background:linear-gradient(135deg,#f39c12,#e67e22)">BZ</div><span class="rank-name">ByteZero</span><span class="rank-streak">🔥 98</span><span class="rank-xp">6.990 XP</span></div>
+          <div class="rank-row"><span class="rank-pos">8</span><div class="rank-av" style="background:linear-gradient(135deg,#9b59b6,#8e44ad)">QD</div><span class="rank-name">QueryDev</span><span class="rank-streak">🔥 54</span><span class="rank-xp">6.120 XP</span></div>
+          <div class="rank-row"><span class="rank-pos">9</span><div class="rank-av" style="background:linear-gradient(135deg,#1abc9c,#16a085)">WA</div><span class="rank-name">WebArtist</span><span class="rank-streak">🔥 41</span><span class="rank-xp">5.880 XP</span></div>
+          <div class="rank-row"><span class="rank-pos">10</span><div class="rank-av" style="background:linear-gradient(135deg,#e91e63,#c2185b)">SX</div><span class="rank-name">SyntaxX</span><span class="rank-streak">🔥 22</span><span class="rank-xp">5.400 XP</span></div>
+        </div>
+      </div>
+      <div class="right-panel" id="rp-ranking"></div>
+    </div>
+
+    <!-- ══════ SKILL TREE ══════ -->
+    <div id="page-skilltree" class="page">
+      <div class="skill-main">
+        <div class="sec-title">Skill Tree</div>
+        <div class="skill-tree">
+          <div class="skill-node unlocked"><div class="skill-icon">🌐</div><div class="skill-name">HTML Fundamentos</div><div class="skill-desc">Estrutura básica de páginas web</div><div class="skill-status done">✓ Concluído</div></div>
+          <div class="skill-node unlocked"><div class="skill-icon">🎨</div><div class="skill-name">CSS Básico</div><div class="skill-desc">Estilização e seletores CSS</div><div class="skill-status done">✓ Concluído</div></div>
+          <div class="skill-node active-skill"><div class="skill-icon">📐</div><div class="skill-name">Flexbox</div><div class="skill-desc">Layouts flexíveis e responsivos</div><div class="skill-status prog">Em andamento</div></div>
+          <div class="skill-node locked-skill"><div class="skill-icon">⚡</div><div class="skill-name">JavaScript</div><div class="skill-desc">Lógica e interatividade</div><div class="skill-status lock">🔒 Bloqueado</div></div>
+          <div class="skill-node locked-skill"><div class="skill-icon">📦</div><div class="skill-name">CSS Grid</div><div class="skill-desc">Sistema de grade avançado</div><div class="skill-status lock">🔒 Bloqueado</div></div>
+          <div class="skill-node locked-skill"><div class="skill-icon">🎭</div><div class="skill-name">Animações CSS</div><div class="skill-desc">Keyframes e transições</div><div class="skill-status lock">🔒 Bloqueado</div></div>
+          <div class="skill-node locked-skill"><div class="skill-icon">🔗</div><div class="skill-name">DOM Manipulation</div><div class="skill-desc">Interação com o documento</div><div class="skill-status lock">🔒 Bloqueado</div></div>
+          <div class="skill-node locked-skill"><div class="skill-icon">🌊</div><div class="skill-name">Async JS</div><div class="skill-desc">Promises e async/await</div><div class="skill-status lock">🔒 Bloqueado</div></div>
+          <div class="skill-node locked-skill"><div class="skill-icon">⚛️</div><div class="skill-name">React Básico</div><div class="skill-desc">Componentes e estado</div><div class="skill-status lock">🔒 Bloqueado</div></div>
+          <div class="skill-node locked-skill"><div class="skill-icon">🔥</div><div class="skill-name">APIs & Fetch</div><div class="skill-desc">Consumo de APIs REST</div><div class="skill-status lock">🔒 Bloqueado</div></div>
+          <div class="skill-node locked-skill"><div class="skill-icon">🧪</div><div class="skill-name">Testing</div><div class="skill-desc">Testes unitários e E2E</div><div class="skill-status lock">🔒 Bloqueado</div></div>
+          <div class="skill-node locked-skill"><div class="skill-icon">🚀</div><div class="skill-name">Deploy</div><div class="skill-desc">Publicação e CI/CD</div><div class="skill-status lock">🔒 Bloqueado</div></div>
+        </div>
+      </div>
+      <div class="right-panel" id="rp-skilltree"></div>
+    </div>
+
+    <!-- ══════ DEVTAGS ══════ -->
+    <div id="page-devtags" class="page">
+      <div class="devtags-main">
+        <div class="sec-title">DevTags</div>
+        <div class="tags-grid">
+          <div class="tag-card owned"><div class="tag-icon">🌐</div><div class="tag-name">HTML Hero</div><div class="tag-desc">Mestre dos elementos HTML</div><div class="tag-status owned">✓ Conquistado</div></div>
+          <div class="tag-card owned"><div class="tag-icon">🎨</div><div class="tag-name">CSS Artist</div><div class="tag-desc">Domina estilização avançada</div><div class="tag-status owned">✓ Conquistado</div></div>
+          <div class="tag-card"><div class="tag-icon">🔥</div><div class="tag-name">Streak King</div><div class="tag-desc">Manteve 30 dias de streak</div><div class="tag-status locked">🔒 718/730 dias</div></div>
+          <div class="tag-card"><div class="tag-icon">⚡</div><div class="tag-name">Speed Coder</div><div class="tag-desc">Completou desafio em menos de 5min</div><div class="tag-status locked">🔒 Bloqueado</div></div>
+          <div class="tag-card"><div class="tag-icon">🧠</div><div class="tag-name">Problem Solver</div><div class="tag-desc">Resolveu 50 desafios únicos</div><div class="tag-status locked">🔒 23/50</div></div>
+          <div class="tag-card"><div class="tag-icon">🏆</div><div class="tag-name">Top 5</div><div class="tag-desc">Entrou no top 5 do ranking</div><div class="tag-status locked">🔒 Posição atual: 6</div></div>
+          <div class="tag-card"><div class="tag-icon">🌟</div><div class="tag-name">Perfect Week</div><div class="tag-desc">7 dias consecutivos de missões</div><div class="tag-status locked">🔒 4/7 dias</div></div>
+          <div class="tag-card"><div class="tag-icon">🤝</div><div class="tag-name">Social Dev</div><div class="tag-desc">Convidou 5 amigos</div><div class="tag-status locked">🔒 2/5 amigos</div></div>
+        </div>
+      </div>
+      <div class="right-panel" id="rp-devtags"></div>
+    </div>
+
+    <!-- ══════ CONQUISTAS ══════ -->
+    <div id="page-conquistas" class="page">
+      <div class="conquistas-main">
+        <div class="sec-title">Conquistas</div>
+        <div class="conquistas-grid">
+          <div class="conq-card earned"><div class="conq-icon">🏅</div><div class="conq-name">Explorador HTML</div><div class="conq-desc">Complete todas as lições de HTML básico</div><div class="conq-badge earned">✓ Conquistado</div></div>
+          <div class="conq-card earned"><div class="conq-icon">🎨</div><div class="conq-name">Pintor de CSS</div><div class="conq-desc">Estilize 10 componentes diferentes</div><div class="conq-badge earned">✓ Conquistado</div></div>
+          <div class="conq-card earned"><div class="conq-icon">🔥</div><div class="conq-name">Chama Viva</div><div class="conq-desc">Alcance 100 dias de streak consecutivo</div><div class="conq-badge earned">✓ Conquistado</div></div>
+          <div class="conq-card locked"><div class="conq-icon">⚡</div><div class="conq-name">Flash Dev</div><div class="conq-desc">Complete um desafio em menos de 2 minutos</div><div class="conq-badge locked">🔒 Bloqueado</div></div>
+          <div class="conq-card locked"><div class="conq-icon">🧙</div><div class="conq-name">Mago do JS</div><div class="conq-desc">Complete 30 desafios de JavaScript</div><div class="conq-badge locked">🔒 0/30</div></div>
+          <div class="conq-card locked"><div class="conq-icon">👑</div><div class="conq-name">Rei do Ranking</div><div class="conq-desc">Chegue ao 1° lugar no ranking global</div><div class="conq-badge locked">🔒 Posição 6</div></div>
+          <div class="conq-card locked"><div class="conq-icon">🌍</div><div class="conq-name">World Class</div><div class="conq-desc">Convide 10 amigos que completem uma trilha</div><div class="conq-badge locked">🔒 0/10</div></div>
+          <div class="conq-card locked"><div class="conq-icon">💎</div><div class="conq-name">Diamante</div><div class="conq-desc">Acumule 10.000 gemas no total</div><div class="conq-badge locked">🔒 35/10000</div></div>
+          <div class="conq-card locked"><div class="conq-icon">🚀</div><div class="conq-name">Full Stack</div><div class="conq-desc">Complete as trilhas Frontend e Backend</div><div class="conq-badge locked">🔒 1/2 trilhas</div></div>
+        </div>
+      </div>
+      <div class="right-panel" id="rp-conquistas"></div>
+    </div>
+
+    <!-- ══════ PERFIL ══════ -->
+    <div id="page-perfil" class="page">
+      <div class="perfil-main">
+        <div class="perfil-hero">
+          <div class="perfil-av">DM</div>
+          <div style="flex:1">
+            <div class="perfil-name">DevMaster</div>
+            <div class="perfil-title">Frontend Warrior · Nível 24</div>
+            <div class="perfil-stats-row">
+              <div class="ps-stat"><div class="ps-val" style="color:var(--gold)">718</div><div class="ps-lbl">Streak</div></div>
+              <div class="ps-stat"><div class="ps-val" style="color:var(--gem)">7.617</div><div class="ps-lbl">XP Total</div></div>
+              <div class="ps-stat"><div class="ps-val" style="color:var(--accent2)">35</div><div class="ps-lbl">Gemas</div></div>
+              <div class="ps-stat"><div class="ps-val" style="color:var(--green)">3</div><div class="ps-lbl">Conquistas</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="perfil-grid">
+          <div class="ps-card"><div class="ps-card-icon">📚</div><div class="ps-card-val">23</div><div class="ps-card-lbl">Lições concluídas</div></div>
+          <div class="ps-card"><div class="ps-card-icon">⚡</div><div class="ps-card-val">12</div><div class="ps-card-lbl">Desafios feitos</div></div>
+          <div class="ps-card"><div class="ps-card-icon">🎯</div><div class="ps-card-val">47</div><div class="ps-card-lbl">Missões completadas</div></div>
+          <div class="ps-card"><div class="ps-card-icon">⏱</div><div class="ps-card-val">84h</div><div class="ps-card-lbl">Horas de estudo</div></div>
+          <div class="ps-card"><div class="ps-card-icon">🏆</div><div class="ps-card-val">#6</div><div class="ps-card-lbl">Ranking global</div></div>
+          <div class="ps-card"><div class="ps-card-icon">🌿</div><div class="ps-card-val">68%</div><div class="ps-card-lbl">Trilha Frontend</div></div>
+        </div>
+        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:18px">
+          <div class="sec-title" style="margin-bottom:14px">Tags conquistadas</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <div style="display:flex;align-items:center;gap:6px;background:var(--accent-dim);border:1px solid var(--border2);border-radius:var(--rpill);padding:5px 13px;font-size:12px;font-weight:600;color:var(--accent2)">🌐 HTML Hero</div>
+            <div style="display:flex;align-items:center;gap:6px;background:var(--accent-dim);border:1px solid var(--border2);border-radius:var(--rpill);padding:5px 13px;font-size:12px;font-weight:600;color:var(--accent2)">🎨 CSS Artist</div>
+          </div>
+        </div>
+      </div>
+      <div class="right-panel" id="rp-perfil"></div>
+    </div>
+
+    <!-- ══════ CONFIGURAÇÕES ══════ -->
+    <div id="page-config" class="page">
+      <div class="config-main">
+        <div class="sec-title">Configurações</div>
+        <div class="config-section">
+          <div class="config-section-title">Conta</div>
+          <div class="config-row"><div><div class="cr-label">Nome de usuário</div><div class="cr-sub">DevMaster</div></div><button style="padding:6px 14px;background:var(--accent-dim);border:1px solid var(--border2);border-radius:var(--rsm);color:var(--accent2);font-size:12px;font-weight:600;cursor:pointer;font-family:var(--font)">Editar</button></div>
+          <div class="config-row"><div><div class="cr-label">E-mail</div><div class="cr-sub">dev@codequest.com</div></div><button style="padding:6px 14px;background:var(--accent-dim);border:1px solid var(--border2);border-radius:var(--rsm);color:var(--accent2);font-size:12px;font-weight:600;cursor:pointer;font-family:var(--font)">Alterar</button></div>
+          <div class="config-row"><div><div class="cr-label">Senha</div><div class="cr-sub">Última alteração há 3 meses</div></div><button style="padding:6px 14px;background:var(--accent-dim);border:1px solid var(--border2);border-radius:var(--rsm);color:var(--accent2);font-size:12px;font-weight:600;cursor:pointer;font-family:var(--font)">Mudar</button></div>
+        </div>
+        <div class="config-section">
+          <div class="config-section-title">Notificações</div>
+          <div class="config-row"><div><div class="cr-label">Lembrete diário</div><div class="cr-sub">Receba alertas para manter seu streak</div></div><div class="toggle on" onclick="this.classList.toggle('on')"></div></div>
+          <div class="config-row"><div><div class="cr-label">Novas missões</div><div class="cr-sub">Seja notificado de missões disponíveis</div></div><div class="toggle on" onclick="this.classList.toggle('on')"></div></div>
+          <div class="config-row"><div><div class="cr-label">Ranking updates</div><div class="cr-sub">Mudanças na sua posição do ranking</div></div><div class="toggle" onclick="this.classList.toggle('on')"></div></div>
+          <div class="config-row"><div><div class="cr-label">E-mail semanal</div><div class="cr-sub">Resumo de progresso toda segunda-feira</div></div><div class="toggle" onclick="this.classList.toggle('on')"></div></div>
+        </div>
+        <div class="config-section">
+          <div class="config-section-title">Aparência</div>
+          <div class="config-row"><div><div class="cr-label">Idioma</div></div><select class="config-select"><option>Português (BR)</option><option>English</option><option>Español</option></select></div>
+          <div class="config-row"><div><div class="cr-label">Sons de feedback</div><div class="cr-sub">Efeitos sonoros ao concluir lições</div></div><div class="toggle on" onclick="this.classList.toggle('on')"></div></div>
+        </div>
+        <div class="config-section">
+          <div class="config-section-title">Conta</div>
+          <div class="config-row"><div><div class="cr-label" style="color:var(--red)">Sair da conta</div></div><button style="padding:6px 14px;background:rgba(231,76,60,.12);border:1px solid rgba(231,76,60,.3);border-radius:var(--rsm);color:var(--red);font-size:12px;font-weight:600;cursor:pointer;font-family:var(--font)">Sair</button></div>
+        </div>
+      </div>
+      <div class="right-panel" id="rp-config"></div>
+    </div>
+
+  </div><!-- /content-area -->
+</div><!-- /wrap -->
+
+<script src="script.js"></script>
+</body>
+</html>

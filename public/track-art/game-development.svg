@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" role="img" aria-labelledby="title desc">
+  <title id="title">Game Development track illustration</title>
+  <desc id="desc">Game controller and pixel arena for the Game Development track.</desc>
+  <rect width="320" height="200" rx="24" fill="#0B0B18"/>
+  <circle cx="160" cy="100" r="92" fill="#EC4899" opacity=".12"/>
+  <path d="M92 82h136c18 0 32 14 32 32v22c0 15-18 23-29 12l-22-22h-98l-22 22c-11 11-29 3-29-12v-22c0-18 14-32 32-32Z" fill="#111126" stroke="#EC4899" stroke-width="5"/>
+  <path d="M102 114h34M119 97v34" stroke="#EEEAFF" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="204" cy="108" r="8" fill="#4DBBFF"/><circle cx="230" cy="124" r="8" fill="#F59E0B"/>
+  <rect x="148" y="106" width="24" height="9" rx="4" fill="#EEEAFF" fill-opacity=".28"/>
+</svg>

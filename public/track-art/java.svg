@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" role="img" aria-labelledby="title desc">
+  <title id="title">Java track illustration</title>
+  <desc id="desc">Futuristic JVM console and energy ring for the Java track.</desc>
+  <rect width="320" height="200" rx="24" fill="#0B0B18"/>
+  <circle cx="160" cy="100" r="72" fill="#F97316" opacity=".14"/>
+  <path d="M108 136c34 16 76 16 104 0" fill="none" stroke="#F97316" stroke-width="9" stroke-linecap="round"/>
+  <path d="M132 118c22 9 48 9 68 0" fill="none" stroke="#EEEAFF" stroke-opacity=".6" stroke-width="6" stroke-linecap="round"/>
+  <path d="M150 46c32 24-22 38 14 62M178 42c26 22-18 34 12 54" fill="none" stroke="#F97316" stroke-width="6" stroke-linecap="round"/>
+  <rect x="82" y="70" width="156" height="82" rx="16" fill="#111126" stroke="#F97316" stroke-opacity=".35"/>
+  <text x="160" y="119" text-anchor="middle" fill="#EEEAFF" font-family="Arial, sans-serif" font-size="34" font-weight="800">JV</text>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" role="img" aria-labelledby="title desc">
+  <title id="title">Python track illustration</title>
+  <desc id="desc">Interlocking code blocks for the Python track.</desc>
+  <rect width="320" height="200" rx="24" fill="#0B0B18"/>
+  <circle cx="90" cy="56" r="82" fill="#FFD43B" opacity=".14"/>
+  <circle cx="230" cy="144" r="92" fill="#4DBBFF" opacity=".10"/>
+  <path d="M105 52h64a34 34 0 0 1 34 34v12h-78a28 28 0 0 0-28 28v22H74V83a31 31 0 0 1 31-31Z" fill="#FFD43B" opacity=".92"/>
+  <path d="M215 148h-64a34 34 0 0 1-34-34v-12h78a28 28 0 0 0 28-28V52h23v65a31 31 0 0 1-31 31Z" fill="#4DBBFF" opacity=".9"/>
+  <circle cx="118" cy="73" r="6" fill="#0B0B18"/>
+  <circle cx="202" cy="127" r="6" fill="#0B0B18"/>
+</svg>

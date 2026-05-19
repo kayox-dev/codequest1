@@ -1,0 +1,4 @@
+'use client'
+import { create } from 'zustand';import { persist } from 'zustand/middleware';import type { Profile,Track,UserTrackProgress } from '@/types'
+type S={profile:Profile|null;loadingProfile:boolean;currentTrack:Track|null;currentTrackProgress:UserTrackProgress|null;aiOpen:boolean;setProfile:(p:Profile|null)=>void;updateProfile:(p:Partial<Profile>)=>void;setLoadingProfile:(v:boolean)=>void;setCurrentTrack:(t:Track|null,p?:UserTrackProgress|null)=>void;toggleAi:()=>void}
+export const useAppStore=create<S>()(persist((set)=>({profile:null,loadingProfile:true,currentTrack:null,currentTrackProgress:null,aiOpen:false,setProfile:p=>set({profile:p,loadingProfile:false}),updateProfile:p=>set(s=>({profile:s.profile?{...s.profile,...p}:s.profile})),setLoadingProfile:v=>set({loadingProfile:v}),setCurrentTrack:(t,p=null)=>set({currentTrack:t,currentTrackProgress:p}),toggleAi:()=>set(s=>({aiOpen:!s.aiOpen}))}),{name:'codequest-ui',partialize:s=>({aiOpen:s.aiOpen})}))

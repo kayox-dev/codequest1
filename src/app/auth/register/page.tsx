@@ -1,0 +1,58 @@
+'use client'
+
+import { useState } from 'react'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import toast from 'react-hot-toast'
+import { AuthLayout } from '@/components/auth/AuthLayout'
+import { authService } from '@/services/auth.service'
+
+export default function Register() {
+  const [u, setU] = useState('')
+  const [e, setE] = useState('')
+  const [p, setP] = useState('')
+  const [ok, setOk] = useState(false)
+  const router = useRouter()
+
+  async function submit(ev: React.FormEvent) {
+    ev.preventDefault()
+    const { data, error } = await authService.signUpWithEmail(e, p, u)
+    if (error) toast.error(error.message)
+    else if (data.session) router.push('/onboarding')
+    else setOk(true)
+  }
+
+  if (ok)
+    return (
+      <AuthLayout title="Conta criada!" subtitle="Agora confirme pelo email ou entre se a confirmação estiver desativada">
+        <Link className="btn-primary block text-center" href="/auth/login">
+          Ir para login
+        </Link>
+      </AuthLayout>
+    )
+
+  return (
+    <AuthLayout title="Criar conta" subtitle="Todo novo usuário começa zerado">
+      <div className="space-y-3 mb-5">
+        <button type="button" className="btn-secondary w-full" onClick={() => authService.signInWithGoogle()}>
+          Continuar com Google
+        </button>
+        <button type="button" className="btn-secondary w-full" onClick={() => authService.signInWithGitHub()}>
+          Continuar com GitHub
+        </button>
+      </div>
+      <div className="auth-divider">
+        <span>ou use email</span>
+      </div>
+      <form onSubmit={submit} className="space-y-4">
+        <input className="input-field" name="register-username" autoComplete="nickname" placeholder="Username" value={u} onChange={(e) => setU(e.target.value)} required />
+        <input className="input-field" name="register-email" autoComplete="email" type="email" placeholder="Email" value={e} onChange={(ev) => setE(ev.target.value)} required />
+        <input className="input-field" name="register-password" autoComplete="new-password" type="password" minLength={6} placeholder="Senha" value={p} onChange={(e) => setP(e.target.value)} required />
+        <button className="btn-primary w-full">Criar conta zerada</button>
+      </form>
+      <p className="text-center text-t-3 text-sm mt-6">
+        Já tem conta? <Link className="text-accent-2" href="/auth/login">Entrar</Link>
+      </p>
+    </AuthLayout>
+  )
+}

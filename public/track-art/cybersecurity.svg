@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" role="img" aria-labelledby="title desc">
+  <title id="title">Cybersecurity track illustration</title>
+  <desc id="desc">Shield and scan grid for the Cybersecurity track.</desc>
+  <rect width="320" height="200" rx="24" fill="#0B0B18"/>
+  <path d="M30 52h260M30 100h260M30 148h260M80 24v152M160 24v152M240 24v152" stroke="#EF4444" stroke-opacity=".08"/>
+  <path d="M160 38l78 28v42c0 45-33 72-78 88-45-16-78-43-78-88V66l78-28Z" fill="#111126" stroke="#EF4444" stroke-width="4" stroke-opacity=".75"/>
+  <path d="M132 101l18 18 42-48" fill="none" stroke="#2ECC71" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="236" cy="58" r="24" fill="#EF4444" opacity=".18"/>
+</svg>
