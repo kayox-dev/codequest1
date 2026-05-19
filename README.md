@@ -17,7 +17,7 @@ npm run dev
 ```bash
 NEXT_PUBLIC_SUPABASE_URL=https://your-project-ref.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-public-key
-NEXT_PUBLIC_APP_URL=http://localhost:3000
+NEXT_PUBLIC_SITE_URL=https://seu-dominio.com
 ```
 
 Na Vercel, defina as mesmas variaveis em Project Settings > Environment Variables.
@@ -45,8 +45,8 @@ RLS deve permanecer habilitado para `profiles`, `tracks`, `lessons`, `user_track
 
 Em Supabase Authentication > URL Configuration:
 
-- Local Site URL: `http://localhost:3000`
-- Local Redirect URL: `http://localhost:3000/auth/callback`
+- Local Site URL: use o valor de `NEXT_PUBLIC_SITE_URL`
+- Local Redirect URL: `${NEXT_PUBLIC_SITE_URL}/auth/callback`
 - Producao Site URL: `https://seu-dominio.vercel.app`
 - Producao Redirect URL: `https://seu-dominio.vercel.app/auth/callback`
 
