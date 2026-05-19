@@ -147,7 +147,7 @@ export default function CodeQuestIntro() {
             <Sparkles size={15} />
             Campanha inicial desbloqueada
           </div>
-          <h1>Aprenda programação como um RPG.</h1>
+          <h1>Aprenda <span className="cq-intro-nowrap">programação</span> como um RPG.</h1>
           <p>
             Ganhe XP, suba de nível, desbloqueie habilidades e evolua como desenvolvedor enquanto compete com jogadores do mundo inteiro.
           </p>
