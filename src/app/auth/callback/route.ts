@@ -22,11 +22,11 @@ export async function GET(req: Request) {
 
   const { data: profile } = await supabase
     .from('profiles')
-    .select('onboarding_completed,selected_track_id')
+    .select('onboarding_completed')
     .eq('user_id', user.id)
     .maybeSingle()
 
-  const target = !profile?.onboarding_completed ? '/onboarding' : !profile?.selected_track_id ? '/escolha-trilha' : '/dashboard'
+  const target = profile?.onboarding_completed ? '/dashboard' : '/onboarding'
 
   return NextResponse.redirect(new URL(target, url.origin))
 }

@@ -1,17 +1,27 @@
 import { supabase } from '@/lib/supabase'
 import type { Profile } from '@/types'
 
+export function getPostLoginRedirect(profile: Pick<Profile, 'onboarding_completed'> | null) {
+  return profile?.onboarding_completed ? '/dashboard' : '/onboarding'
+}
+
+function getAuthRedirectUrl(path = '/auth/callback') {
+  const configuredUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '')
+  const origin = typeof location !== 'undefined' ? location.origin : configuredUrl
+  return `${origin ?? ''}${path}`
+}
+
 export const authService = {
   signInWithGoogle() {
     return supabase.auth.signInWithOAuth({
       provider: 'google',
-      options: { redirectTo: `${location.origin}/auth/callback` },
+      options: { redirectTo: getAuthRedirectUrl() },
     })
   },
   signInWithGitHub() {
     return supabase.auth.signInWithOAuth({
       provider: 'github',
-      options: { redirectTo: `${location.origin}/auth/callback` },
+      options: { redirectTo: getAuthRedirectUrl() },
     })
   },
   signInWithEmail(email: string, password: string) {
@@ -23,7 +33,7 @@ export const authService = {
       password,
       options: {
         data: { user_name: username },
-        emailRedirectTo: `${location.origin}/auth/callback`,
+        emailRedirectTo: getAuthRedirectUrl(),
       },
     })
   },
@@ -32,7 +42,7 @@ export const authService = {
   },
   forgotPassword(email: string) {
     return supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${location.origin}/auth/callback?type=recovery`,
+      redirectTo: getAuthRedirectUrl('/auth/callback?type=recovery'),
     })
   },
 }

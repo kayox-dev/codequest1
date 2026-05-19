@@ -4,9 +4,8 @@ import { createContext, useContext, useEffect, type ReactNode } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import type { User } from '@supabase/supabase-js'
 import { supabase } from '@/lib/supabase'
-import { profileService } from '@/services/auth.service'
+import { getPostLoginRedirect, profileService } from '@/services/auth.service'
 import { useAppStore } from '@/store'
-import type { Profile } from '@/types'
 
 const C = createContext(null)
 
@@ -78,22 +77,6 @@ async function loadProfile(user: User) {
   return syncedProfile ?? profileService.getProfile(user.id)
 }
 
-function introStorageKey(userId: string) {
-  return `codequest_intro_completed_${userId}`
-}
-
-function hasCompletedIntro(userId: string, profile: Profile | null) {
-  if (profile?.intro_completed) return true
-  if (typeof window === 'undefined') return false
-  return localStorage.getItem(introStorageKey(userId)) === 'true'
-}
-
-function getAuthenticatedTarget(userId: string, profile: Profile | null) {
-  if (!profile?.onboarding_completed) return '/onboarding'
-  if (!hasCompletedIntro(userId, profile)) return '/intro'
-  return !profile?.selected_track_id ? '/escolha-trilha' : '/dashboard'
-}
-
 export function AuthProvider({ children }: { children: ReactNode }) {
   const { setProfile, setLoadingProfile } = useAppStore()
   const r = useRouter()
@@ -114,9 +97,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         try {
           const p = await loadProfile(session.user)
           setProfile(p)
-          const target = getAuthenticatedTarget(session.user.id, p)
-          if (path?.startsWith('/auth')) r.push(target)
-          if (!path?.startsWith('/auth') && !path?.startsWith('/onboarding') && !path?.startsWith('/intro') && target === '/intro') r.push(target)
+          const target = getPostLoginRedirect(p)
+          if (path?.startsWith('/auth')) {
+            r.replace(target)
+            r.refresh()
+          }
         } catch (profileError) {
           console.error('[AuthProvider] load profile error', {
             userId: session.user.id,
@@ -139,9 +124,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         try {
           const p = await loadProfile(s.user)
           setProfile(p)
-          const target = getAuthenticatedTarget(s.user.id, p)
-          if (path?.startsWith('/auth')) r.push(target)
-          if (!path?.startsWith('/auth') && !path?.startsWith('/onboarding') && !path?.startsWith('/intro') && target === '/intro') r.push(target)
+          const target = getPostLoginRedirect(p)
+          if (path?.startsWith('/auth')) {
+            r.replace(target)
+            r.refresh()
+          }
         } catch (profileError) {
           console.error('[AuthProvider] signed-in profile load error', {
             userId: s.user.id,
