@@ -14,7 +14,7 @@ import { useAppStore } from '@/store'
 import type { Lesson, Track } from '@/types'
 
 type MissionStage = 'briefing' | 'learn' | 'code'
-type Tech = 'html' | 'css' | 'javascript' | 'typescript' | 'react' | 'node' | 'python' | 'sql' | 'git'
+type Tech = 'html' | 'css' | 'javascript' | 'typescript' | 'react' | 'node' | 'python' | 'sql' | 'git' | 'java' | 'php' | 'cybersecurity' | 'ai' | 'mobile' | 'devops' | 'game'
 type ValidationResult = { ok: boolean; title: string; detail: string; kind: 'success' | 'warn' | 'error' }
 type MissionFile = { id: string; label: string; language: string; value: string }
 
@@ -53,6 +53,13 @@ const techByTrackSlug: Record<string, Tech> = {
   'banco-de-dados': 'sql',
   'ui-ux': 'css',
   'seguranca-web': 'node',
+  java: 'java',
+  php: 'php',
+  cybersecurity: 'cybersecurity',
+  'ai-engineer': 'ai',
+  mobile: 'mobile',
+  devops: 'devops',
+  'game-development': 'game',
 }
 
 function getInitialFileId(spec: ChallengeSpec) {
@@ -60,11 +67,23 @@ function getInitialFileId(spec: ChallengeSpec) {
 }
 
 function detectTech(lesson: Lesson, track?: Track | null): Tech {
-  if (track?.slug && techByTrackSlug[track.slug]) return techByTrackSlug[track.slug]
+  const source = normalize(`${lesson.title} ${lesson.description} ${JSON.stringify(lesson.content ?? '')}`)
+  const trackSlug = track?.slug ?? ''
 
-  const source = normalize(`${track?.slug ?? ''} ${track?.title ?? ''} ${lesson.title} ${lesson.description} ${JSON.stringify(lesson.content ?? '')}`)
-  if (source.includes('react') || source.includes('jsx') || source.includes('hook') || source.includes('component')) return 'react'
-  if (source.includes('typescript') || source.includes(' type') || source.includes('interface')) return 'typescript'
+  if (source.includes('html') || source.includes('doctype') || source.includes(' tag') || source.includes('<h1') || source.includes('semantica')) return 'html'
+  if (source.includes('css') || source.includes('flex') || source.includes('grid') || source.includes('box model') || source.includes('responsiv') || source.includes('hover') || source.includes('focus') || source.includes('tema')) return 'css'
+  if (source.includes('javascript') || source.includes('dom') || source.includes('addeventlistener') || source.includes('localstorage') || source.includes('promise') || source.includes('async') || source.includes('array')) return 'javascript'
+  if (source.includes('react') || source.includes('jsx') || source.includes('hook') || source.includes('props') || source.includes('usestate') || source.includes('componente')) return 'react'
+  if (source.includes('typescript') || source.includes(' tipada') || source.includes(' tipado') || source.includes('interfaces') || source.includes('generics') || source.includes('union type')) return 'typescript'
+
+  if (trackSlug === 'backend') {
+    if (source.includes('sql') || source.includes('banco') || source.includes('tabela') || source.includes('query') || source.includes('persist')) return 'sql'
+    return 'node'
+  }
+
+  if (trackSlug && techByTrackSlug[trackSlug]) return techByTrackSlug[trackSlug]
+
+  const broadSource = normalize(`${track?.slug ?? ''} ${track?.title ?? ''} ${source}`)
   if (source.includes('git') || source.includes('commit') || source.includes('branch') || source.includes('github')) return 'git'
   if (source.includes('banco') || source.includes('sql') || source.includes('supabase') || source.includes('tabela')) return 'sql'
   if (source.includes('node') || source.includes('api') || source.includes('apis') || source.includes('backend') || source.includes('express') || source.includes('json') || source.includes('http') || source.includes('rest') || source.includes('seguranca') || source.includes('auth') || source.includes('owasp')) return 'node'
@@ -72,6 +91,13 @@ function detectTech(lesson: Lesson, track?: Track | null): Tech {
   if (source.includes('javascript') || source.includes('script') || source.includes('dom') || source.includes('array') || source.includes('func')) return 'javascript'
   if (source.includes('css') || source.includes('flex') || source.includes('grid') || source.includes('animacao') || source.includes('responsiv') || source.includes('ui') || source.includes('ux') || source.includes('design') || source.includes('acessibilidade')) return 'css'
   if (source.includes('html') || source.includes('tag') || source.includes('semantica')) return 'html'
+  if (broadSource.includes('java')) return 'java'
+  if (broadSource.includes('php')) return 'php'
+  if (broadSource.includes('cyber') || broadSource.includes('seguranca') || broadSource.includes('security')) return 'cybersecurity'
+  if (broadSource.includes('ai engineer') || broadSource.includes(' ia ') || broadSource.includes('rag') || broadSource.includes('prompt')) return 'ai'
+  if (broadSource.includes('mobile') || broadSource.includes('react native')) return 'mobile'
+  if (broadSource.includes('devops') || broadSource.includes('docker') || broadSource.includes('kubernetes')) return 'devops'
+  if (broadSource.includes('game') || broadSource.includes('jogo')) return 'game'
   return 'javascript'
 }
 
@@ -777,6 +803,101 @@ function getPythonSpec(lesson: Lesson, conceptSource?: string): ChallengeSpec {
   }
 }
 
+function getGenericTrackSpec(lesson: Lesson, tech: Tech, track?: Track | null): ChallengeSpec {
+  const source = normalize(`${lesson.title} ${lesson.description} ${JSON.stringify(lesson.content ?? '')}`)
+  const firstBlock = Array.isArray(lesson.content) ? lesson.content[0] : null
+  const challengeText = firstBlock?.challenge || lesson.description || `Explique o conceito central de ${lesson.title}.`
+  const configs: Record<string, { badge: string; file: string; language: string; required: string[]; starter: string; solution: string; useCase: string; mentalModel: string }> = {
+    java: {
+      badge: 'Java',
+      file: 'Main.java',
+      language: 'java',
+      required: source.includes('spring') ? ['@RestController', '@GetMapping'] : source.includes('poo') || source.includes('classe') ? ['class', 'void', 'this'] : ['class Main', 'public static void main', 'System.out.println'],
+      starter: 'class Main {\n  public static void main(String[] args) {\n    \n  }\n}',
+      solution: 'class Main {\n  public static void main(String[] args) {\n    System.out.println("CodeQuest Java");\n  }\n}',
+      useCase: 'Java aparece em APIs, sistemas corporativos, Android, microsserviços e integrações de grande porte.',
+      mentalModel: 'Pense em Java como contratos explícitos: classes organizam dados e métodos executam regras previsíveis.',
+    },
+    php: {
+      badge: 'PHP',
+      file: 'index.php',
+      language: 'php',
+      required: source.includes('pdo') || source.includes('sql') ? ['prepare', 'execute'] : source.includes('form') || source.includes('post') ? ['$_POST', 'htmlspecialchars'] : ['<?php', 'echo'],
+      starter: '<?php\n\n',
+      solution: '<?php\n$nome = "CodeQuest";\necho "Olá, " . $nome;\n',
+      useCase: 'PHP é usado em aplicações server-rendered, APIs, WordPress, Laravel e sistemas web com formulários.',
+      mentalModel: 'O servidor executa o PHP, monta uma resposta e entrega HTML ou dados para o navegador.',
+    },
+    cybersecurity: {
+      badge: 'Cybersecurity',
+      file: 'checklist.md',
+      language: 'markdown',
+      required: ['risco', 'impacto', 'correção'],
+      starter: '# Checklist de segurança\n\n- Risco:\n- Impacto:\n- Correção:\n',
+      solution: '# Checklist de segurança\n\n- Risco: entrada sem validação\n- Impacto: abuso ou vazamento de dados\n- Correção: validar entrada, registrar evidências e aplicar controles\n',
+      useCase: 'Segurança aparece em login, permissões, rede, HTTP, validação, logs, segredos e deploy.',
+      mentalModel: 'Trabalhe sempre com escopo autorizado: identificar risco, provar impacto com cuidado e propor correção clara.',
+    },
+    ai: {
+      badge: 'AI Engineer',
+      file: 'plano.md',
+      language: 'markdown',
+      required: ['dados', 'avaliação', 'fallback'],
+      starter: '# Plano de IA\n\n- Dados:\n- Avaliação:\n- Fallback:\n',
+      solution: '# Plano de IA\n\n- Dados: fontes limpas e versionadas\n- Avaliação: exemplos com rubrica objetiva\n- Fallback: resposta segura quando a confiança for baixa\n',
+      useCase: 'Engenharia de IA combina dados, prompts, embeddings, RAG, agentes, avaliação, custos e deploy.',
+      mentalModel: 'Um produto de IA confiável precisa de contexto bom, critérios de qualidade e caminhos seguros para falhas.',
+    },
+    mobile: {
+      badge: 'Mobile',
+      file: 'App.tsx',
+      language: 'typescript',
+      required: ['View', 'Text', 'Pressable'],
+      starter: 'export function App() {\n  return (\n    \n  )\n}',
+      solution: 'export function App() {\n  return (\n    <View>\n      <Text>CodeQuest Mobile</Text>\n      <Pressable><Text>Iniciar</Text></Pressable>\n    </View>\n  )\n}',
+      useCase: 'Mobile exige telas claras, toque confortável, área segura, estado previsível, rede resiliente e performance.',
+      mentalModel: 'Pense em fluxos curtos: cada tela deve mostrar estado, ação principal e feedback imediato ao toque.',
+    },
+    devops: {
+      badge: 'DevOps',
+      file: 'pipeline.yml',
+      language: 'yaml',
+      required: ['build', 'test', 'deploy'],
+      starter: 'stages:\n  - build\n',
+      solution: 'stages:\n  - build\n  - test\n  - deploy\n',
+      useCase: 'DevOps conecta código a produção com terminal, Git, Docker, CI/CD, cloud, observabilidade e rollback.',
+      mentalModel: 'Automatize o caminho repetível: preparar ambiente, validar mudança, publicar com segurança e observar produção.',
+    },
+    game: {
+      badge: 'Game Dev',
+      file: 'game.js',
+      language: 'javascript',
+      required: ['update', 'render', 'input'],
+      starter: 'function update() {\n}\n\nfunction render() {\n}\n',
+      solution: 'const input = {}\n\nfunction update(delta) {\n  player.x += input.right ? 120 * delta : 0\n}\n\nfunction render() {\n  draw(player)\n}\n',
+      useCase: 'Game development combina loop, input, sprites, colisão, fases, HUD, som, polimento e build jogável.',
+      mentalModel: 'A cada frame o jogo lê entrada, atualiza estado e renderiza uma resposta visual clara.',
+    },
+  }
+  const config = configs[tech] ?? configs.devops
+
+  return {
+    tech,
+    badge: config.badge,
+    focus: config.file,
+    objective: challengeText,
+    requiredJs: config.required,
+    files: [{ id: config.file, label: config.file, language: config.language, value: config.starter }],
+    solutionFiles: [{ id: config.file, label: config.file, language: config.language, value: config.solution }],
+    concept: firstBlock?.text || lesson.description,
+    useCase: config.useCase,
+    mentalModel: config.mentalModel,
+    hint: `Inclua os termos essenciais desta missão: ${config.required.join(', ')}.`,
+    demoTitle: `${config.badge} esperado`,
+    outputTitle: `${config.badge} validação`,
+  }
+}
+
 function getLessonConceptSources(lesson: Lesson, track?: Track | null) {
   const source = normalize(`${lesson.title} ${lesson.description} ${JSON.stringify(lesson.content ?? '')}`)
   const tech = detectTech(lesson, track)
@@ -855,6 +976,7 @@ function getChallengeSpecForConcept(lesson: Lesson, track: Track | null | undefi
   if (tech === 'python') return getPythonSpec(lesson, conceptSource)
   if (tech === 'sql') return getSqlSpec(lesson, conceptSource)
   if (tech === 'git') return getGitSpec(lesson, conceptSource)
+  if (['java', 'php', 'cybersecurity', 'ai', 'mobile', 'devops', 'game'].includes(tech)) return getGenericTrackSpec(lesson, tech, track)
   return getHtmlSpec(lesson, conceptSource)
 }
 
@@ -874,6 +996,9 @@ function validateMission(files: MissionFile[], spec: ChallengeSpec): ValidationR
   if (spec.tech === 'node') return validateNode(fileById(files, 'server.js'), spec)
   if (spec.tech === 'sql') return validateKeywordMission(fileById(files, 'query.sql'), spec, 'SQL validado', 'A consulta contém as cláusulas principais da missão.')
   if (spec.tech === 'git') return validateKeywordMission(fileById(files, 'terminal.sh'), spec, 'Git validado', 'O fluxo de terminal contém os comandos esperados.')
+  if (['java', 'php', 'cybersecurity', 'ai', 'mobile', 'devops', 'game'].includes(spec.tech)) {
+    return validateKeywordMission(fileById(files, spec.files[0]?.id ?? ''), spec, `${spec.badge} validado`, 'A resposta contém os pontos essenciais desta lição.')
+  }
   return validatePython(fileById(files, 'main.py'), spec)
 }
 
@@ -1005,6 +1130,10 @@ function getOutput(spec: ChallengeSpec, files: MissionFile[], runtimeLines: stri
   if (spec.tech === 'git') {
     const ok = validateKeywordMission(fileById(files, 'terminal.sh'), spec, 'ok', 'ok').ok
     return ok ? ['$ git status', 'working tree clean', '[main abc123] primeira missao'] : ['$ git status', 'Arquivos modificados aguardando add/commit.']
+  }
+  if (['java', 'php', 'cybersecurity', 'ai', 'mobile', 'devops', 'game'].includes(spec.tech)) {
+    const ok = validateKeywordMission(fileById(files, spec.files[0]?.id ?? ''), spec, 'ok', 'ok').ok
+    return ok ? [`${spec.badge}: missão coerente validada.`] : [`${spec.badge}: complete os itens essenciais da missão.`]
   }
   if (spec.tech === 'react') return ['Preview React renderizando no painel acima.', 'Se o JSX falhar, confira return, props, state e tags fechadas.']
   return ['Preview visual atualizado em tempo real.']

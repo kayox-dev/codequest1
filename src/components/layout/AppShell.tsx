@@ -9,7 +9,6 @@ import {
   Medal,
   MoreHorizontal,
   Settings,
-  ShieldCheck,
   Sparkles,
   Target,
   Trophy,
@@ -45,7 +44,6 @@ const nav: NavItem[] = [
   { href: '/conquistas', icon: Medal, label: 'Conquistas', mobileMore: true },
   { href: '/perfil', icon: User, label: 'Perfil', mobilePrimary: true },
   { href: '/config', icon: Settings, label: 'Configurações', mobileMore: true },
-  { href: '/admin', icon: ShieldCheck, label: 'Admin', mobileMore: true },
 ]
 
 export function AppShell({
