@@ -1,6 +1,21 @@
 'use client'
 
 import Link from 'next/link'
+import {
+  Badge,
+  BarChart3,
+  Crown,
+  Gauge,
+  Medal,
+  MoreHorizontal,
+  Settings,
+  ShieldCheck,
+  Sparkles,
+  Target,
+  Trophy,
+  User,
+  X,
+} from 'lucide-react'
 import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useMemo, useState } from 'react'
 import { AiAssistant } from '@/components/shared/AiAssistant'
@@ -11,17 +26,26 @@ import { authService, profileService } from '@/services/auth.service'
 import { trackService } from '@/services/track.service'
 import { useAppStore } from '@/store'
 
-const nav = [
-  ['/dashboard', '⊞', 'Dashboard'],
-  ['__TRACK__', '🗺', 'Trilhas'],
-  ['/desafios', '⚡', 'Desafios'],
-  ['/missoes', '🎯', 'Missões'],
-  ['/ranking', '🏆', 'Ranking'],
-  ['/skill-tree', '🌿', 'Skill Tree'],
-  ['/config/tags', '🏷', 'Tags'],
-  ['/conquistas', '🥇', 'Conquistas'],
-  ['/perfil', '👤', 'Perfil'],
-  ['/config', '⚙', 'Configurações'],
+type NavItem = {
+  href: string
+  icon: React.ElementType
+  label: string
+  mobilePrimary?: boolean
+  mobileMore?: boolean
+}
+
+const nav: NavItem[] = [
+  { href: '/dashboard', icon: Gauge, label: 'Dashboard', mobilePrimary: true },
+  { href: '__TRACK__', icon: BarChart3, label: 'Trilhas', mobilePrimary: true },
+  { href: '/desafios', icon: Sparkles, label: 'Desafios', mobileMore: true },
+  { href: '/missoes', icon: Target, label: 'Missões', mobilePrimary: true },
+  { href: '/ranking', icon: Trophy, label: 'Ranking', mobileMore: true },
+  { href: '/skill-tree', icon: Crown, label: 'Skill Tree', mobileMore: true },
+  { href: '/config/tags', icon: Badge, label: 'Tags', mobileMore: true },
+  { href: '/conquistas', icon: Medal, label: 'Conquistas', mobileMore: true },
+  { href: '/perfil', icon: User, label: 'Perfil', mobilePrimary: true },
+  { href: '/config', icon: Settings, label: 'Configurações', mobileMore: true },
+  { href: '/admin', icon: ShieldCheck, label: 'Admin', mobileMore: true },
 ]
 
 export function AppShell({
@@ -35,6 +59,7 @@ export function AppShell({
   const router = useRouter()
   const { profile, currentTrack, setProfile, setCurrentTrack, toggleAi } = useAppStore()
   const [trackHref, setTrackHref] = useState('/escolha-trilha')
+  const [mobileMoreOpen, setMobileMoreOpen] = useState(false)
 
   useEffect(() => {
     let active = true
@@ -100,14 +125,40 @@ export function AppShell({
   }, [currentTrack, profile?.selected_track_id, setCurrentTrack])
 
   const resolvedNav = useMemo(
-    () => nav.map(([href, icon, label]) => [href === '__TRACK__' ? trackHref : href, icon, label]),
+    () => nav.map((item) => ({ ...item, href: item.href === '__TRACK__' ? trackHref : item.href })),
     [trackHref],
   )
   const mobileNav = useMemo(
-    () => resolvedNav.filter(([, , label]) => ['Dashboard', 'Trilhas', 'Missões', 'Desafios', 'Perfil'].includes(label)),
+    () => resolvedNav.filter((item) => item.mobilePrimary),
     [resolvedNav],
   )
+  const mobileMoreNav = useMemo(
+    () => resolvedNav.filter((item) => item.mobileMore),
+    [resolvedNav],
+  )
+  const isActiveNavItem = (href: string, label: string) =>
+    label === 'Trilhas'
+      ? path === href || path.startsWith('/trilhas')
+      : href === '/config'
+        ? path === '/config' || path.startsWith('/config/avatar')
+        : path === href || path.startsWith(`${href}/`)
+  const mobileMoreActive = mobileMoreNav.some(({ href, label }) => isActiveNavItem(href, label))
   const equippedTag = getEquippedPlayerTag(profile)
+
+  useEffect(() => {
+    setMobileMoreOpen(false)
+  }, [path])
+
+  useEffect(() => {
+    if (!mobileMoreOpen) return
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setMobileMoreOpen(false)
+    }
+
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [mobileMoreOpen])
 
   return (
     <div className="app-shell">
@@ -117,15 +168,12 @@ export function AppShell({
           <span className="logo-text">CodeQuest</span>
         </Link>
         <nav className="nav" aria-label="Navegação principal">
-          {resolvedNav.map(([href, icon, label]) => {
-            const active =
-              path === href ||
-              path.startsWith(`${href}/`) ||
-              (label === 'Trilhas' && path.startsWith('/trilhas'))
+          {resolvedNav.map(({ href, icon: Icon, label }) => {
+            const active = isActiveNavItem(href, label)
 
             return (
               <Link key={`${label}-${href}`} href={href} className={`nav-item ${active ? 'active' : ''}`} aria-current={active ? 'page' : undefined}>
-                <span className="ni" aria-hidden="true">{icon}</span>
+                <Icon className="ni" aria-hidden="true" size={17} strokeWidth={2.25} />
                 {label}
               </Link>
             )
@@ -188,20 +236,70 @@ export function AppShell({
         </div>
       </div>
 
+      <div
+        className={`mobile-more-backdrop ${mobileMoreOpen ? 'open' : ''}`}
+        aria-hidden="true"
+        onClick={() => setMobileMoreOpen(false)}
+      />
+      <aside
+        id="mobile-more-menu"
+        className={`mobile-more-drawer ${mobileMoreOpen ? 'open' : ''}`}
+        aria-label="Mais áreas da plataforma"
+        aria-hidden={!mobileMoreOpen}
+        inert={!mobileMoreOpen ? true : undefined}
+      >
+        <div className="mobile-more-head">
+          <div>
+            <span>CodeQuest</span>
+            <strong>Mais áreas</strong>
+          </div>
+          <button type="button" className="mobile-more-close" aria-label="Fechar menu Mais" onClick={() => setMobileMoreOpen(false)}>
+            <X size={19} aria-hidden="true" />
+          </button>
+        </div>
+        <nav className="mobile-more-list" aria-label="Áreas adicionais mobile">
+          {mobileMoreNav.map(({ href, icon: Icon, label }) => {
+            const active = isActiveNavItem(href, label)
+
+            return (
+              <Link
+                key={`mobile-more-${label}-${href}`}
+                href={href}
+                className={`mobile-more-item ${active ? 'active' : ''}`}
+                aria-current={active ? 'page' : undefined}
+              >
+                <span className="mobile-more-icon" aria-hidden="true">
+                  <Icon size={19} strokeWidth={2.2} />
+                </span>
+                <strong>{label}</strong>
+              </Link>
+            )
+          })}
+        </nav>
+      </aside>
+
       <nav className="mobile-bottom-nav" aria-label="Navegação principal mobile">
-        {mobileNav.map(([href, icon, label]) => {
-          const active =
-            path === href ||
-            path.startsWith(`${href}/`) ||
-            (label === 'Trilhas' && path.startsWith('/trilhas'))
+        {mobileNav.map(({ href, icon: Icon, label }) => {
+          const active = isActiveNavItem(href, label)
 
           return (
             <Link key={`mobile-${label}-${href}`} href={href} className={`mobile-nav-item ${active ? 'active' : ''}`} aria-current={active ? 'page' : undefined}>
-              <span aria-hidden="true">{icon}</span>
+              <Icon aria-hidden="true" size={20} strokeWidth={2.25} />
               <strong>{label}</strong>
             </Link>
           )
         })}
+        <button
+          type="button"
+          className={`mobile-nav-item mobile-more-trigger ${mobileMoreActive || mobileMoreOpen ? 'active' : ''}`}
+          aria-label="Abrir mais áreas da plataforma"
+          aria-expanded={mobileMoreOpen}
+          aria-controls="mobile-more-menu"
+          onClick={() => setMobileMoreOpen((open) => !open)}
+        >
+          <MoreHorizontal aria-hidden="true" size={22} strokeWidth={2.4} />
+          <strong>Mais</strong>
+        </button>
       </nav>
 
       <AiAssistant />
